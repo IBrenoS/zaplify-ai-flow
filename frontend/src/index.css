@@ -1,0 +1,403 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Zaplify Design System - Apple Pro Mode Meets Digital Energy */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Light Theme - "Clareza Solar" inspired by Clickmax */
+    --background: 231 20% 96%; /* #F4F4F7 */
+    --foreground: 20 14% 37%; /* #5D5753 */
+
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 20 14% 37%; /* #5D5753 */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 37%;
+
+    /* Zaplify Colors adapted for light theme */
+    --primary: 150 43% 51%; /* #50B887 - Verde suave */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 20 14% 37%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 150 43% 51%; /* #50B887 */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 67%; /* #E57373 - Vermelho terracota suave */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 150 43% 51%;
+
+    /* Light theme effects */
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --gradient-primary: linear-gradient(135deg, #50B887, #4CAF50);
+    --gradient-subtle: linear-gradient(180deg, rgba(80, 184, 135, 0.1), rgba(76, 175, 80, 0.1));
+    
+    /* Light theme shadows */
+    --shadow-elegant: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-glow: 0 0 20px rgba(80, 184, 135, 0.2);
+    --shadow-focus-light: 0 0 0 3px rgba(80, 184, 135, 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-focus: all 0.2s ease-in-out;
+    
+    /* Chart animations */
+    --chart-animation-duration: 800ms;
+    --chart-animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Theme - "Foco Elétrico" com glassmorphism */
+    --background: 0 0% 11%; /* #1C1C1E - Clickmax inspired */
+    --foreground: 0 0% 95%; /* #F2F2F7 */
+
+    --card: 0 0% 9.4%; /* #181818 */
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 9.4%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 120 100% 54%; /* #39FF14 */
+    --primary-foreground: 0 0% 11%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 56%; /* #8E8E93 */
+
+    --accent: 160 82% 57%; /* #2AF598 */
+    --accent-foreground: 0 0% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 120 100% 54%;
+
+    /* Glassmorphism effects */
+    --glass-bg: rgba(44, 44, 46, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --gradient-primary: linear-gradient(135deg, #39FF14, #2AF598);
+    --gradient-subtle: linear-gradient(180deg, rgba(57, 255, 20, 0.1), rgba(42, 245, 152, 0.1));
+    
+    /* Enhanced shadows for glassmorphism */
+    --shadow-elegant: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 40px rgba(57, 255, 20, 0.15);
+    --shadow-focus-dark: 0 0 0 3px rgba(42, 245, 152, 0.3);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  /* Prevent horizontal scrolling on mobile */
+  @media (max-width: 768px) {
+    body, #root {
+      overflow-x: hidden;
+      width: 100vw;
+    }
+  }
+}
+
+@layer components {
+  /* Glassmorphism Effects */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl;
+  }
+  
+  .glass-nav {
+    @apply bg-card/60 backdrop-blur-xl border-r border-white/10;
+  }
+
+  /* Glass background utility */
+  .bg-glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+  }
+  
+  /* Gradient Text & Buttons */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gradient-button {
+    background: var(--gradient-primary);
+    @apply text-primary-foreground font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:translate-y-[-2px] hover:shadow-xl;
+  }
+  
+  /* Smooth Animations */
+  .smooth-transition {
+    transition: var(--transition-smooth);
+  }
+  
+  /* Chart Animations */
+  .chart-animate-bars {
+    animation: chart-bar-grow var(--chart-animation-duration) var(--chart-animation-easing) forwards;
+  }
+  
+  .chart-animate-line {
+    animation: chart-line-draw var(--chart-animation-duration) var(--chart-animation-easing) forwards;
+  }
+  
+  /* Keyframes for chart animations */
+  @keyframes chart-bar-grow {
+    from {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+    to {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+  }
+  
+  @keyframes chart-line-draw {
+    from {
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 200;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fillUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes sparklineFill {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+    60% {
+      opacity: 0.8;
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+  }
+
+  @keyframes sparklineGlow {
+    0% {
+      filter: drop-shadow(0 0 0px transparent);
+    }
+    50% {
+      filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6));
+    }
+    100% {
+      filter: drop-shadow(0 0 4px hsl(var(--primary) / 0.3));
+    }
+  }
+
+  @keyframes smoothLineDraw {
+    0% {
+      stroke-dashoffset: 1;
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Consistent color fixes */
+  .text-semantic-positive {
+    color: hsl(var(--primary));
+  }
+  
+  .text-semantic-negative {
+    color: hsl(var(--destructive));
+  }
+  
+  .text-semantic-neutral {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .bg-semantic-positive {
+    background-color: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.2);
+  }
+  
+  .bg-semantic-negative {
+    background-color: hsl(var(--destructive) / 0.1);
+    border-color: hsl(var(--destructive) / 0.2);
+  }
+
+  /* Wave animations for login page */
+  @keyframes wave1 {
+    0%, 100% {
+      d: path("M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z");
+    }
+    50% {
+      d: path("M0,350 Q300,250 600,350 T1200,350 L1200,800 L0,800 Z");
+    }
+  }
+
+  @keyframes wave2 {
+    0%, 100% {
+      d: path("M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z");
+    }
+    50% {
+      d: path("M0,450 Q400,350 800,450 T1200,450 L1200,800 L0,800 Z");
+    }
+  }
+
+  @keyframes wave3 {
+    0%, 100% {
+      d: path("M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z");
+    }
+    50% {
+      d: path("M0,550 Q200,450 400,550 T800,550 T1200,550 L1200,800 L0,800 Z");
+    }
+  }
+
+  @keyframes drawLine {
+    from {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    to {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fillUp {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
