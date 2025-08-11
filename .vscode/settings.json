@@ -1,0 +1,10 @@
+{
+  "material-icon-theme.folders.associations": {
+    "funnel-engine": "scripts",
+    "analytics-service": "database",
+    "ia-conversational": "robot",
+    "whatsapp-service": "client",
+    "api-gateway": "typescript"
+  },
+  "workbench.iconTheme": "material-icon-theme"
+}

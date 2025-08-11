@@ -7,7 +7,6 @@
     { "path": "funnel-engine" },
     { "path": "whatsapp-service" },
     { "path": "analytics-service" },
-    { "path": "backend" },
     { "path": "ia-conversational" },
     { "path": "supabase" }
   ],
@@ -15,16 +14,12 @@
     // Só essas pastas serão tratadas como projetos Python
     "python.envs.pythonProjects": [
       "analytics-service",
-      "backend",
       "ia-conversational"
     ],
 
     // Configuração por pasta Python
     "[analytics-service]": {
       "python.defaultInterpreterPath": "${workspaceFolder:analytics-service}\\.venv\\Scripts\\python.exe"
-    },
-    "[backend]": {
-      "python.defaultInterpreterPath": "${workspaceFolder:backend}\\.venv\\Scripts\\python.exe"
     },
     "[ia-conversational]": {
       "python.defaultInterpreterPath": "${workspaceFolder:ia-conversational}\\.venv\\Scripts\\python.exe"

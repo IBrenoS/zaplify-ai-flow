@@ -1,4 +1,248 @@
-# Zaplify AI Flow
+# 🚀 Zaplify AI Flow - Arquitetura de Microserviços
+
+Sistema híbrido de IA conversacional com automação de funis para WhatsApp.
+
+## 🏗️ Arquitetura
+
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   FRONTEND      │    │    API GATEWAY   │    │   MICROSERVIÇOS │
+│   React/TS      │◄──►│   Node.js/TS     │◄──►│                 │
+│   (Existente)   │    │   (Roteamento)   │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                         │
+                       ┌─────────────────────────────────┼─────────────────────────────────┐
+                       │                                 │                                 │
+              ┌────────▼────────┐              ┌────────▼────────┐                ┌──────▼──────┐
+              │  IA SERVICE     │              │ WHATSAPP SERVICE│                │ ANALYTICS   │
+              │  Python/FastAPI │              │ Node.js/TS      │                │ Python/TS   │
+              └─────────────────┘              └─────────────────┘                └─────────────┘
+                                                         │
+                                              ┌────────▼────────┐
+                                              │ FUNNEL ENGINE   │
+                                              │ Node.js/TS      │
+                                              └─────────────────┘
+```
+
+## 📁 Estrutura de Diretórios
+
+```
+zaplify-ai-flow/
+├── frontend/                    # React + TypeScript (existente)
+├── services/                    # Microserviços
+│   ├── api-gateway/            # Gateway centralizado (Node.js/TS)
+│   ├── ai-service/             # Serviço de IA (Python/FastAPI)
+│   ├── whatsapp-service/       # Integração WhatsApp (Node.js/TS)
+│   ├── funnel-engine/          # Motor de funis (Node.js/TS)
+│   └── analytics-service/      # Analytics e métricas (Python)
+├── shared/                     # Bibliotecas compartilhadas
+│   ├── types/                  # Tipos TypeScript comuns
+│   └── utils/                  # Utilitários compartilhados
+├── infrastructure/             # Docker e deployment
+│   ├── docker-compose.yml      # Ambiente completo
+│   └── docker-compose.dev.yml  # Apenas bancos para dev
+└── supabase/                   # Configurações Supabase
+```
+
+## 🛠️ Stack Tecnológica
+
+### Frontend (Mantido)
+
+- **React + TypeScript + Vite**
+- **Tailwind CSS + shadcn/ui**
+- **Zustand para estado global**
+
+### Backend Microserviços
+
+#### 1. API Gateway (Node.js/TypeScript)
+
+- **Express.js** - Framework web
+- **Socket.io** - WebSocket para tempo real
+- **JWT** - Autenticação centralizada
+- **Rate Limiting** - Proteção contra abuso
+- **Proxy Middleware** - Roteamento para serviços
+
+#### 2. AI Service (Python/FastAPI)
+
+- **FastAPI** - Framework assíncrono
+- **LangChain** - Orquestração de IA
+- **OpenAI GPT** - Modelos de linguagem
+- **ChromaDB** - Vector database
+- **RAG** - Retrieval-Augmented Generation
+
+#### 3. WhatsApp Service (Node.js/TypeScript)
+
+- **Baileys** - WhatsApp Web API
+- **Express.js** - API REST
+- **Socket.io** - Eventos em tempo real
+- **Sharp/FFmpeg** - Processamento de mídia
+- **MongoDB** - Persistência de sessões
+
+#### 4. Funnel Engine (Node.js/TypeScript)
+
+- **Express.js** - API REST
+- **Bull** - Filas de processamento
+- **MongoDB** - Armazenamento de funis
+- **Cron Jobs** - Agendamento de tarefas
+- **JSONPath** - Processamento de condições
+
+#### 5. Analytics Service (Python)
+
+- **FastAPI** - API assíncrona
+- **Pandas/NumPy** - Processamento de dados
+- **Matplotlib/Plotly** - Visualizações
+- **PostgreSQL** - Dados estruturados
+- **Celery** - Tarefas em background
+
+### Bancos de Dados
+
+- **PostgreSQL** - Dados estruturados (usuários, analytics)
+- **MongoDB** - Dados não estruturados (mensagens, sessões)
+- **Redis** - Cache e filas
+- **ChromaDB** - Vector database para IA
+
+## 🚀 Quick Start
+
+### Desenvolvimento Local
+
+1. **Clone o repositório**
+
+```bash
+git clone https://github.com/IBrenoS/zaplify-ai-flow.git
+cd zaplify-ai-flow
+```
+
+2. **Inicie os bancos de dados**
+
+```bash
+cd infrastructure
+docker-compose -f docker-compose.dev.yml up -d
+```
+
+3. **Configure cada serviço**
+
+```bash
+# API Gateway
+cd services/api-gateway
+cp .env.example .env
+npm install
+npm run dev
+
+# AI Service
+cd services/ai-service
+cp .env.example .env
+python -m venv venv
+source venv/bin/activate  # ou venv\Scripts\activate no Windows
+pip install -e .
+uvicorn ai_service.main:app --reload --port 8001
+
+# WhatsApp Service
+cd services/whatsapp-service
+cp .env.example .env
+npm install
+npm run dev
+
+# Funnel Engine
+cd services/funnel-engine
+cp .env.example .env
+npm install
+npm run dev
+
+# Analytics Service
+cd services/analytics-service
+cp .env.example .env
+pip install -e .
+uvicorn analytics_service.main:app --reload --port 8002
+
+# Frontend (existente)
+cd frontend
+npm run dev
+```
+
+### Docker Completo
+
+```bash
+cd infrastructure
+docker-compose up -d
+```
+
+## 📊 Endpoints dos Serviços
+
+### API Gateway (http://localhost:3000)
+
+- `GET /health` - Status do gateway
+- `POST /auth/login` - Autenticação
+- `/api/ai/*` → AI Service
+- `/api/whatsapp/*` → WhatsApp Service
+- `/api/funnel/*` → Funnel Engine
+- `/api/analytics/*` → Analytics Service
+
+### AI Service (http://localhost:8001)
+
+- `POST /chat/` - Conversação com IA
+- `POST /embeddings/` - Gerar embeddings
+- `GET /models/` - Modelos disponíveis
+
+### WhatsApp Service (http://localhost:3002)
+
+- `POST /connection/connect/:sessionId` - Conectar WhatsApp
+- `POST /messages/send` - Enviar mensagem
+- `GET /connection/qr/:sessionId` - QR Code
+
+### Funnel Engine (http://localhost:3003)
+
+- `POST /funnels/` - Criar funil
+- `POST /funnels/:id/execute` - Executar funil
+- `GET /flows/:id/status` - Status do fluxo
+
+### Analytics Service (http://localhost:8002)
+
+- `GET /metrics/kpis` - KPIs principais
+- `POST /reports/generate` - Gerar relatório
+- `GET /dashboards/:id` - Dashboard
+
+## 🔧 Configuração de Desenvolvimento
+
+### Variáveis de Ambiente
+
+Cada serviço possui um arquivo `.env.example` com todas as configurações necessárias.
+
+### Bancos de Dados
+
+- **PostgreSQL**: `localhost:5432`
+- **MongoDB**: `localhost:27017`
+- **Redis**: `localhost:6379`
+
+### Ferramentas de Desenvolvimento
+
+- **pgAdmin**: http://localhost:5050 (admin@zaplify.com / admin)
+- **Mongo Express**: http://localhost:8081
+- **Redis Commander**: http://localhost:8082
+
+## 📈 Próximos Passos
+
+1. **Implementar lógica de negócio** em cada serviço
+2. **Configurar autenticação JWT** no API Gateway
+3. **Implementar conexão WhatsApp** com Baileys
+4. **Desenvolver engine de IA** com LangChain
+5. **Criar sistema de funis** inteligentes
+6. **Implementar analytics** em tempo real
+
+## 🤝 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+**Desenvolvido pela equipe Zaplify** 🚀
 
 <div align="center">
   <img src="public/placeholder.svg" alt="Zaplify AI Flow Logo" width="120" />
