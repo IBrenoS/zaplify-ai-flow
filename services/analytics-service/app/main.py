@@ -1,18 +1,20 @@
-import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
-from dotenv import load_dotenv
 
 load_dotenv()
 app = FastAPI(title="analytics-service")
+
 
 @app.get("/health")
 def health():
     return {"ok": True, "service": "analytics-service"}
 
+
 class Event(BaseModel):
     type: str
     payload: dict
+
 
 # Endpoint simples para ingestão HTTP (até plugar um bus de eventos)
 @app.post("/events")
