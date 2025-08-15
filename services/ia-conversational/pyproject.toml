@@ -1,12 +1,58 @@
+[project]
+name = "ia-conversational"
+version = "1.0.0"
+description = "Multi-tenant AI conversational service with RAG, LLM integration, and memory management"
+
 [tool.ruff]
-line-length = 100
+line-length = 88
 target-version = "py312"
-extend-select = ["I"] # organize imports
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"app/tests/*" = ["S101"] # Allow assert in tests
 
 [tool.black]
-line-length = 100
+line-length = 88
 target-version = ["py312"]
+skip-string-normalization = true
 
 [tool.pytest.ini_options]
-addopts = "-q"
+testpaths = ["app/tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
 pythonpath = ["app"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+    "--disable-warnings"
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests"
+]
+
+[tool.coverage.run]
+source = ["app"]
+omit = [
+    "app/tests/*",
+    "*/venv/*",
+    "*/.venv/*"
+]

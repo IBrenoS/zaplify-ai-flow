@@ -57,7 +57,7 @@ zaplify-ai-flow/
 #### 1. API Gateway (Node.js/TypeScript)
 
 - **Express.js** - Framework web
-- **Socket.io** - WebSocket para tempo real
+- **WebSocket (ws)** - WebSocket para tempo real
 - **JWT** - Autenticação centralizada
 - **Rate Limiting** - Proteção contra abuso
 - **Proxy Middleware** - Roteamento para serviços
@@ -74,7 +74,7 @@ zaplify-ai-flow/
 
 - **Baileys** - WhatsApp Web API
 - **Express.js** - API REST
-- **Socket.io** - Eventos em tempo real
+- **WebSocket** - Eventos em tempo real
 - **Sharp/FFmpeg** - Processamento de mídia
 - **MongoDB** - Persistência de sessões
 

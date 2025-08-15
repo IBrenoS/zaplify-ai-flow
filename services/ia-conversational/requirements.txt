@@ -1,5 +1,48 @@
+# FastAPI and core web framework
 fastapi==0.112.0
 uvicorn[standard]==0.30.5
 pydantic==2.8.2
 python-dotenv==1.0.1
+python-multipart>=0.0.6  # For file uploads
+
+# AI and ML integrations
 openai>=1.40.0
+transformers>=4.35.0
+torch>=2.0.0
+sentence-transformers>=2.2.0  # For local embeddings
+
+# Document processing
+PyPDF2>=3.0.0  # For PDF parsing
+python-docx>=0.8.11  # For DOCX parsing (TODO)
+
+# Database and caching
+redis>=5.0.0
+supabase>=2.4.0
+psycopg2-binary>=2.9.0
+pgvector>=0.2.0
+
+# Event streaming (Kafka/Redpanda)
+aiokafka>=0.10.0
+
+# HTTP client and utilities
+httpx>=0.27.0
+
+# Production server
+gunicorn>=21.2.0
+
+# Observability and monitoring (optional)
+opentelemetry-api>=1.20.0
+opentelemetry-sdk>=1.20.0
+opentelemetry-instrumentation-fastapi>=0.41b0
+opentelemetry-exporter-otlp>=1.20.0
+prometheus-client>=0.18.0
+
+# Logging
+loguru>=0.7.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+ruff>=0.1.0
+black>=23.9.0
