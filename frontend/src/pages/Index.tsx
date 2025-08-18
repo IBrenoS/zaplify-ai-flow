@@ -7,7 +7,7 @@ import { SalesChart } from "@/components/dashboard/SalesChart";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
-import { 
+import {
   DollarSign,
   TrendingUp,
   X,
@@ -19,12 +19,12 @@ import {
   Plus,
   BarChart3
 } from "lucide-react";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator 
+  DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { DateRange } from "react-day-picker";
@@ -72,7 +72,7 @@ const Index = () => {
 
   const periodLabels = {
     '1d': 'Hoje',
-    '7d': 'Últimos 7 dias', 
+    '7d': 'Últimos 7 dias',
     '30d': 'Últimos 30 dias',
     'all': 'Todo o tempo',
     'custom': 'Período personalizado'
@@ -85,12 +85,12 @@ const Index = () => {
     try {
       // For custom date range, we'll need to modify the RPC call
       let periodParam = selectedPeriod;
-      
+
       if (selectedPeriod === 'custom' && dateRange?.from && dateRange?.to) {
         // For custom ranges, we'll use '30d' as fallback and handle custom logic later
         periodParam = '30d';
       }
-      
+
       const { data, error } = await supabase.rpc('get_dashboard_data', {
         user_id_param: user.id,
         period_param: periodParam === 'custom' ? '30d' : periodParam,
@@ -226,7 +226,7 @@ const Index = () => {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-48 bg-background/95 backdrop-blur-xl border border-white/10">
                     {assistants.length === 0 ? (
-                      <DropdownMenuItem 
+                      <DropdownMenuItem
                         onClick={handleCreateNewAgent}
                         className="cursor-pointer flex items-center space-x-2"
                       >
@@ -235,7 +235,7 @@ const Index = () => {
                       </DropdownMenuItem>
                     ) : (
                       <>
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={() => setSelectedAssistant(null)}
                           className="cursor-pointer"
                         >
@@ -243,7 +243,7 @@ const Index = () => {
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         {assistants.map((assistant) => (
-                          <DropdownMenuItem 
+                          <DropdownMenuItem
                             key={assistant.id}
                             onClick={() => setSelectedAssistant(assistant.id)}
                             className="cursor-pointer"
@@ -252,7 +252,7 @@ const Index = () => {
                           </DropdownMenuItem>
                         ))}
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem 
+                        <DropdownMenuItem
                           onClick={handleCreateNewAgent}
                           className="cursor-pointer flex items-center space-x-2 text-primary"
                         >
@@ -265,9 +265,9 @@ const Index = () => {
                 </DropdownMenu>
               </div>
             </div>
-            
-            <div 
-              className="flex items-center space-x-2 px-4 py-2 rounded-full bg-glass backdrop-blur-xl border border-white/10 cursor-pointer transition-all duration-300 hover:bg-white/5" 
+
+            <div
+              className="flex items-center space-x-2 px-4 py-2 rounded-full bg-glass backdrop-blur-xl border border-white/10 cursor-pointer transition-all duration-300 hover:bg-white/5"
               onClick={() => setShowValues(!showValues)}
             >
               {showValues ? (
@@ -296,7 +296,7 @@ const Index = () => {
             showValue={showValues}
             sparklineData={dashboardData.vendasDiaADia.map(d => d.value)}
           />
-          
+
           <GlassKPICard
             title="Canceladas"
             value={formatCurrency(dashboardData.canceladas)}
@@ -306,7 +306,7 @@ const Index = () => {
             showValue={showValues}
             sparklineData={dashboardData.vendasDiaADia.map(d => Math.max(0, d.value * 0.1))}
           />
-          
+
           <GlassKPICard
             title="Ganho líquido"
             value={formatCurrency(dashboardData.ganhoLiquido)}
@@ -323,7 +323,7 @@ const Index = () => {
         </div>
 
         {/* Sales Chart */}
-        <SalesChart 
+        <SalesChart
           data={dashboardData.vendasDiaADia}
           title="Vendas dia a dia"
         />

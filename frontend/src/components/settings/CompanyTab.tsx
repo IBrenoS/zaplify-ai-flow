@@ -21,7 +21,7 @@ interface TeamMember {
 export const CompanyTab = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  
+
   const [companyData, setCompanyData] = useState({
     name: "Zaplify Solutions",
     cnpj: "12.345.678/0001-90",
@@ -54,8 +54,8 @@ export const CompanyTab = () => {
     <div className="space-y-6">
       {/* Company Details Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader>
@@ -77,8 +77,8 @@ export const CompanyTab = () => {
               )}
             </div>
             <div className="relative">
-              <Button 
-                variant={isDark ? "default" : "default"} 
+              <Button
+                variant={isDark ? "default" : "default"}
                 size="sm"
                 className={isDark ? "bg-gradient-zaplify" : ""}
               >
@@ -103,8 +103,8 @@ export const CompanyTab = () => {
                 value={companyData.name}
                 onChange={(e) => setCompanyData(prev => ({ ...prev, name: e.target.value }))}
                 className={`${
-                  isDark 
-                    ? "bg-muted/50 border-white/10 text-foreground" 
+                  isDark
+                    ? "bg-muted/50 border-white/10 text-foreground"
                     : "bg-white border-gray-200 text-foreground"
                 }`}
               />
@@ -117,8 +117,8 @@ export const CompanyTab = () => {
                 value={companyData.cnpj}
                 onChange={(e) => setCompanyData(prev => ({ ...prev, cnpj: e.target.value }))}
                 className={`${
-                  isDark 
-                    ? "bg-muted/50 border-white/10 text-foreground" 
+                  isDark
+                    ? "bg-muted/50 border-white/10 text-foreground"
                     : "bg-white border-gray-200 text-foreground"
                 }`}
               />
@@ -133,8 +133,8 @@ export const CompanyTab = () => {
 
       {/* Team Members Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader className="flex flex-row items-center justify-between">
@@ -142,8 +142,8 @@ export const CompanyTab = () => {
             <UserPlus className="h-5 w-5" />
             Membros da Equipe
           </CardTitle>
-          <Button 
-            size="sm" 
+          <Button
+            size="sm"
             className={isDark ? "bg-gradient-zaplify" : ""}
           >
             <Plus className="h-4 w-4 mr-2" />

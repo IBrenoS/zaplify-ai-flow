@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  MessageSquare, 
-  ShoppingCart, 
-  User, 
+import {
+  MessageSquare,
+  ShoppingCart,
+  User,
   Clock,
   TrendingUp,
   CheckCircle,
@@ -106,8 +106,8 @@ export function RecentActivity() {
         </div>
       </CardContent>
       <div className="activity-footer border-t border-border/20">
-        <Button 
-          variant="secondary" 
+        <Button
+          variant="secondary"
           size="sm"
           className="text-sm text-primary hover:text-primary/80 bg-muted/40 hover:bg-muted/60"
         >

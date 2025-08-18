@@ -56,8 +56,8 @@ export const MobileControls = ({
       {/* Indicador de Modo */}
       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-20">
         <div className={`px-4 py-2 rounded-full text-sm font-medium ${
-          isEditMode 
-            ? 'bg-green-500/20 text-green-700 border border-green-500/30' 
+          isEditMode
+            ? 'bg-green-500/20 text-green-700 border border-green-500/30'
             : 'bg-blue-500/20 text-blue-700 border border-blue-500/30'
         }`}>
           {isEditMode ? '✏️ Modo Edição' : '👁️ Modo Visualização'}

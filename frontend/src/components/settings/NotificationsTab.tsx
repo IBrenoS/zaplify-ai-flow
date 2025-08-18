@@ -113,14 +113,14 @@ export const NotificationsTab = () => {
   ]);
 
   const handleNotificationToggle = (
-    categoryId: string, 
-    optionId: string, 
-    type: 'email' | 'push', 
+    categoryId: string,
+    optionId: string,
+    type: 'email' | 'push',
     value: boolean
   ) => {
-    setNotifications(prev => 
-      prev.map(category => 
-        category.id === categoryId 
+    setNotifications(prev =>
+      prev.map(category =>
+        category.id === categoryId
           ? {
               ...category,
               options: category.options.map(option =>
@@ -141,11 +141,11 @@ export const NotificationsTab = () => {
       {notifications.map((category) => {
         const IconComponent = category.icon;
         return (
-          <Card 
+          <Card
             key={category.id}
             className={`${
-              isDark 
-                ? "bg-card/60 backdrop-blur-lg border-white/10" 
+              isDark
+                ? "bg-card/60 backdrop-blur-lg border-white/10"
                 : "bg-white shadow-sm border-border"
             }`}
           >
@@ -157,11 +157,11 @@ export const NotificationsTab = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               {category.options.map((option) => (
-                <div 
+                <div
                   key={option.id}
                   className={`p-4 rounded-lg border ${
-                    isDark 
-                      ? "bg-muted/20 border-white/10" 
+                    isDark
+                      ? "bg-muted/20 border-white/10"
                       : "bg-gray-50 border-gray-200"
                   }`}
                 >
@@ -180,13 +180,13 @@ export const NotificationsTab = () => {
                         </div>
                         <Switch
                           checked={option.email}
-                          onCheckedChange={(value) => 
+                          onCheckedChange={(value) =>
                             handleNotificationToggle(category.id, option.id, 'email', value)
                           }
                           className={`${
-                            option.email 
-                              ? isDark 
-                                ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500" 
+                            option.email
+                              ? isDark
+                                ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500"
                                 : "data-[state=checked]:bg-primary"
                               : ""
                           }`}
@@ -201,13 +201,13 @@ export const NotificationsTab = () => {
                         </div>
                         <Switch
                           checked={option.push}
-                          onCheckedChange={(value) => 
+                          onCheckedChange={(value) =>
                             handleNotificationToggle(category.id, option.id, 'push', value)
                           }
                           className={`${
-                            option.push 
-                              ? isDark 
-                                ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500" 
+                            option.push
+                              ? isDark
+                                ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500"
                                 : "data-[state=checked]:bg-primary"
                               : ""
                           }`}

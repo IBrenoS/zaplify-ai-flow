@@ -6,10 +6,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { 
-  X, 
-  Sparkles, 
-  Save, 
+import {
+  X,
+  Sparkles,
+  Save,
   Play,
   MessageCircle,
   Zap,
@@ -51,7 +51,7 @@ export function ConfigPanel({ isOpen, onClose, selectedNode, onUpdateNode }: Con
   };
 
   const getNodeTypeColor = () => {
-    return selectedNode.data.type === 'condition' 
+    return selectedNode.data.type === 'condition'
       ? 'bg-purple-500/20 text-purple-400 border-purple-500/30'
       : 'bg-primary/20 text-primary border-primary/30';
   };
@@ -248,7 +248,7 @@ export function ConfigPanel({ isOpen, onClose, selectedNode, onUpdateNode }: Con
               Testar
             </Button>
           </div>
-          
+
           <Button variant="ghost" onClick={onClose} className="w-full">
             Cancelar
           </Button>

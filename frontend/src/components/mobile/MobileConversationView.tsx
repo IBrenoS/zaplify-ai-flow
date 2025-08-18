@@ -3,14 +3,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import { 
-  Bot, 
-  User, 
-  Send, 
-  Paperclip, 
-  Smile, 
-  Phone, 
-  Video, 
+import {
+  Bot,
+  User,
+  Send,
+  Paperclip,
+  Smile,
+  Phone,
+  Video,
   MoreVertical,
   ArrowLeft,
   Info
@@ -44,11 +44,11 @@ interface MobileConversationViewProps {
   onShowDetails: () => void;
 }
 
-export function MobileConversationView({ 
-  contact, 
-  messages, 
-  onBack, 
-  onShowDetails 
+export function MobileConversationView({
+  contact,
+  messages,
+  onBack,
+  onShowDetails
 }: MobileConversationViewProps) {
   const [isAIActive, setIsAIActive] = useState(contact.isAIActive);
   const [messageInput, setMessageInput] = useState("");
@@ -56,7 +56,7 @@ export function MobileConversationView({
 
   const handleToggleAI = () => {
     setIsAIActive(!isAIActive);
-    
+
     if (!isAIActive) {
       toast({
         title: "🤖 IA Reativada",
@@ -75,8 +75,8 @@ export function MobileConversationView({
             <Button variant="ghost" size="icon" onClick={onBack}>
               <ArrowLeft className="w-5 h-5" />
             </Button>
-            
-            <button 
+
+            <button
               onClick={onShowDetails}
               className="flex items-center gap-3 flex-1 text-left"
             >
@@ -91,7 +91,7 @@ export function MobileConversationView({
               </div>
             </button>
           </div>
-          
+
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="icon">
               <Phone className="w-4 h-4" />
@@ -112,8 +112,8 @@ export function MobileConversationView({
             variant={isAIActive ? "default" : "secondary"}
             className={cn(
               "w-full rounded-full px-4 py-2 smooth-transition",
-              isAIActive 
-                ? "bg-gradient-zaplify hover:shadow-lg" 
+              isAIActive
+                ? "bg-gradient-zaplify hover:shadow-lg"
                 : "bg-muted hover:bg-muted/80"
             )}
           >
@@ -161,7 +161,7 @@ export function MobileConversationView({
               </div>
             </div>
           ))}
-          
+
           {!isAIActive && (
             <div className="flex justify-center">
               <div className="flex items-center gap-2 px-4 py-2 bg-muted/50 rounded-full text-sm text-muted-foreground">
@@ -179,7 +179,7 @@ export function MobileConversationView({
           <Button variant="ghost" size="icon">
             <Paperclip className="w-5 h-5" />
           </Button>
-          
+
           <div className="flex-1 relative">
             <Input
               placeholder={isAIActive ? "IA está no controle..." : "Digite uma mensagem..."}
@@ -199,9 +199,9 @@ export function MobileConversationView({
               <Smile className="w-4 h-4" />
             </Button>
           </div>
-          
-          <Button 
-            size="icon" 
+
+          <Button
+            size="icon"
             disabled={!messageInput.trim() || isAIActive}
             className="bg-gradient-zaplify hover:shadow-lg"
           >

@@ -8,9 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { 
-  X, 
-  Minimize2, 
+import {
+  X,
+  Minimize2,
   Maximize2,
   MessageCircle,
   Zap,
@@ -42,30 +42,30 @@ interface AdvancedNodeManagerProps {
 type NodeStatus = 'todo' | 'in-progress' | 'completed' | 'paused' | 'problem';
 
 const statusConfig: Record<NodeStatus, { label: string; icon: React.ReactNode; color: string }> = {
-  'todo': { 
-    label: 'A Fazer', 
-    icon: <Play className="w-4 h-4" />, 
-    color: 'text-gray-400' 
+  'todo': {
+    label: 'A Fazer',
+    icon: <Play className="w-4 h-4" />,
+    color: 'text-gray-400'
   },
-  'in-progress': { 
-    label: 'Em Progresso', 
-    icon: <Play className="w-4 h-4" />, 
-    color: 'text-blue-400' 
+  'in-progress': {
+    label: 'Em Progresso',
+    icon: <Play className="w-4 h-4" />,
+    color: 'text-blue-400'
   },
-  'completed': { 
-    label: 'Concluído', 
-    icon: <CheckCircle2 className="w-4 h-4" />, 
-    color: 'text-green-400' 
+  'completed': {
+    label: 'Concluído',
+    icon: <CheckCircle2 className="w-4 h-4" />,
+    color: 'text-green-400'
   },
-  'paused': { 
-    label: 'Pausado', 
-    icon: <Pause className="w-4 h-4" />, 
-    color: 'text-yellow-400' 
+  'paused': {
+    label: 'Pausado',
+    icon: <Pause className="w-4 h-4" />,
+    color: 'text-yellow-400'
   },
-  'problem': { 
-    label: 'Com Problema', 
-    icon: <AlertTriangle className="w-4 h-4" />, 
-    color: 'text-red-400' 
+  'problem': {
+    label: 'Com Problema',
+    icon: <AlertTriangle className="w-4 h-4" />,
+    color: 'text-red-400'
   }
 };
 
@@ -85,7 +85,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
   });
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskText, setNewTaskText] = useState("");
-  
+
   const modalRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
@@ -140,7 +140,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
 
   const getNodeTypeIcon = (): React.ReactNode => {
     if (!selectedNode) return <Rocket className="w-5 h-5" />;
-    
+
     switch (selectedNode.data.type) {
       case 'trigger': return <Rocket className="w-5 h-5" />;
       case 'message': return <MessageCircle className="w-5 h-5" />;
@@ -174,8 +174,8 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
   };
 
   const toggleTask = (taskId: string) => {
-    setTasks(prev => 
-      prev.map(task => 
+    setTasks(prev =>
+      prev.map(task =>
         task.id === taskId ? { ...task, completed: !task.completed } : task
       )
     );
@@ -203,11 +203,11 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
     );
   }
 
-  const modalStyles = isMaximized 
+  const modalStyles = isMaximized
     ? { width: '95vw', height: '95vh', transform: 'translate(-50%, -50%)', left: '50%', top: '50%' }
-    : { 
-        width: '900px', 
-        height: '700px', 
+    : {
+        width: '900px',
+        height: '700px',
         transform: `translate(${position.x}px, ${position.y}px)`,
         left: '50%',
         top: '50%',
@@ -219,7 +219,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      
+
       {/* Modal */}
       <div
         ref={modalRef}
@@ -228,7 +228,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
         onMouseDown={handleMouseDown}
       >
         {/* Header with window controls */}
-        <div 
+        <div
           ref={headerRef}
           className="bg-[#FF4500] px-4 py-3 flex items-center justify-between cursor-move select-none"
         >
@@ -241,7 +241,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
               <p className="text-sm opacity-90">{selectedNode.data.label as string}</p>
             </div>
           </div>
-          
+
           {/* Window Controls */}
           <div className="flex items-center space-x-2">
             <Button
@@ -276,7 +276,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
           {/* Left Sidebar - Configuration */}
           <div className="w-1/3 bg-[#181818]/80 backdrop-blur-sm border-r border-[#333] p-6 overflow-y-auto">
             <h3 className="text-lg font-semibold mb-4 text-[#FF4500]">Configuração Principal</h3>
-            
+
             <div className="space-y-4">
               {/* Nome do Nó */}
               <div className="space-y-2">
@@ -346,7 +346,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
           {/* Middle Section - Notes */}
           <div className="w-1/3 bg-[#181818]/60 backdrop-blur-sm border-r border-[#333] p-6 overflow-y-auto">
             <h3 className="text-lg font-semibold mb-4 text-[#FF4500]">Notas Estratégicas</h3>
-            
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="strategic-notes" className="text-gray-300">Anotações Detalhadas</Label>
@@ -368,8 +368,8 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
                 <Button
                   variant="outline"
                   size="sm"
-                  onClick={() => setNodeConfig(prev => ({ 
-                    ...prev, 
+                  onClick={() => setNodeConfig(prev => ({
+                    ...prev,
                     notes: prev.notes + '\n\n**Objetivo:** \n\n**Métricas:** \n\n**Observações:** '
                   }))}
                   className="bg-[#0A0A0A]/50 border-[#333] text-gray-300 hover:bg-[#333]"
@@ -383,7 +383,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
           {/* Right Section - Tasks & Status */}
           <div className="w-1/3 bg-[#181818]/40 backdrop-blur-sm p-6 overflow-y-auto">
             <h3 className="text-lg font-semibold mb-4 text-[#FF4500]">Checklist de Tarefas</h3>
-            
+
             <div className="space-y-4">
               {/* Add new task */}
               <div className="flex space-x-2">
@@ -394,7 +394,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
                   onKeyDown={(e) => e.key === 'Enter' && addTask()}
                   className="bg-[#0A0A0A]/50 border-[#333] text-white placeholder-gray-500 flex-1"
                 />
-                <Button 
+                <Button
                   onClick={addTask}
                   size="sm"
                   className="bg-[#FF4500] hover:bg-[#FF4500]/80"
@@ -473,7 +473,7 @@ export function AdvancedNodeManager({ isOpen, onClose, selectedNode, onUpdateNod
               <span className="text-sm text-gray-300">{statusConfig[nodeConfig.status].label}</span>
             </div>
           </div>
-          
+
           <div className="flex space-x-2">
             <Button variant="outline" onClick={onClose} className="border-[#333] text-gray-300 hover:bg-[#333]">
               Cancelar

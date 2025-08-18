@@ -36,10 +36,10 @@ export function GlassKPICard({
     return () => clearTimeout(timer);
   }, []);
 
-  const changeColor = changeType === "positive" ? "hsl(var(--primary))" : 
+  const changeColor = changeType === "positive" ? "hsl(var(--primary))" :
                      changeType === "negative" ? "hsl(var(--destructive))" : "hsl(var(--muted-foreground))";
-  
-  const sparklineColor = changeType === "positive" ? "#50B887" : 
+
+  const sparklineColor = changeType === "positive" ? "#50B887" :
                         changeType === "negative" ? "#E57373" : "#8E8E93";
 
   return (
@@ -58,7 +58,7 @@ export function GlassKPICard({
               <Icon className="w-4 h-4 text-muted-foreground" />
             </div>
           </div>
-          
+
           <div className="relative">
             <p className={cn(
               "text-3xl font-inter font-bold text-foreground mb-2 transition-all duration-300",
@@ -66,7 +66,7 @@ export function GlassKPICard({
             )}>
               {showValue ? value : "••••••••"}
             </p>
-            
+
             {!showValue && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-8 bg-white/10 rounded-lg flex items-center justify-center">
@@ -75,7 +75,7 @@ export function GlassKPICard({
               </div>
             )}
           </div>
-          
+
           <div className="flex items-center space-x-1 mb-3">
             <span
               className={cn(
@@ -123,20 +123,20 @@ export function GlassKPICard({
               <stop offset="100%" stopColor={sparklineColor} stopOpacity="0.05" />
             </linearGradient>
           </defs>
-          
+
           {/* Área preenchida */}
           <path
-            d={`M 0 64 ${sparklineData.map((point, index) => 
+            d={`M 0 64 ${sparklineData.map((point, index) =>
               `L ${(index / (sparklineData.length - 1)) * 120} ${64 - (point / Math.max(...sparklineData)) * 48}`
             ).join(' ')} L 120 64 Z`}
             fill={`url(#gradient-${title.replace(/\s+/g, '')})`}
             className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
             style={{ transformOrigin: 'bottom' }}
           />
-          
+
           {/* Linha principal */}
           <path
-            d={`M 0 ${64 - (sparklineData[0] / Math.max(...sparklineData)) * 48} ${sparklineData.map((point, index) => 
+            d={`M 0 ${64 - (sparklineData[0] / Math.max(...sparklineData)) * 48} ${sparklineData.map((point, index) =>
               `L ${(index / (sparklineData.length - 1)) * 120} ${64 - (point / Math.max(...sparklineData)) * 48}`
             ).join(' ')}`}
             fill="none"

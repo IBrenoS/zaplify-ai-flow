@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const { signIn, user } = useAuth();
   const navigate = useNavigate();
 
@@ -26,10 +26,10 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       const { error } = await signIn(email, password);
-      
+
       if (error) {
         if (error.message.includes('Invalid login credentials')) {
           toast.error('E-mail ou senha incorretos');
@@ -111,8 +111,8 @@ const Login = () => {
               </div>
             </div>
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={loading}
               className="w-full h-12 bg-gradient-zaplify text-primary-foreground font-poppins font-semibold text-base hover:shadow-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -123,8 +123,8 @@ const Login = () => {
           {/* Links */}
           <div className="space-y-4 text-center">
             <div>
-              <Link 
-                to="/forgot-password" 
+              <Link
+                to="/forgot-password"
                 className="text-primary hover:text-primary/80 transition-colors font-medium"
               >
                 Esqueci minha senha
@@ -134,8 +134,8 @@ const Login = () => {
             <div>
               <p className="text-muted-foreground">
                 Ainda não tem uma conta?{' '}
-                <Link 
-                  to="/sign-up" 
+                <Link
+                  to="/sign-up"
                   className="text-primary hover:text-primary/80 transition-colors font-medium"
                 >
                   Cadastre-se aqui
@@ -150,9 +150,9 @@ const Login = () => {
       <div className="hidden md:flex md:w-3/5 relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20">
         {/* Animated Wave Background */}
         <div className="absolute inset-0">
-          <svg 
-            className="absolute inset-0 w-full h-full" 
-            viewBox="0 0 1200 800" 
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 1200 800"
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
@@ -167,20 +167,20 @@ const Login = () => {
                 <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.15" />
               </linearGradient>
             </defs>
-            
+
             {/* Animated Waves */}
-            <path 
-              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z" 
+            <path
+              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave1_20s_ease-in-out_infinite]"
             />
-            <path 
-              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z" 
+            <path
+              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z"
               fill="url(#waveGradient2)"
               className="animate-[wave2_25s_ease-in-out_infinite_reverse]"
             />
-            <path 
-              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z" 
+            <path
+              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave3_30s_ease-in-out_infinite]"
             />

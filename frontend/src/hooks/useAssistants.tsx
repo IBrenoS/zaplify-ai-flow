@@ -65,7 +65,7 @@ export const useAssistants = () => {
         title: "Assistente criado",
         description: "Seu assistente foi criado com sucesso!",
       });
-      
+
       return data;
     } catch (error: any) {
       console.error('Error creating assistant:', error);
@@ -89,15 +89,15 @@ export const useAssistants = () => {
 
       if (error) throw error;
 
-      setAssistants(prev => prev.map(assistant => 
+      setAssistants(prev => prev.map(assistant =>
         assistant.id === id ? data : assistant
       ));
-      
+
       toast({
         title: "Assistente atualizado",
         description: "Suas alterações foram salvas com sucesso!",
       });
-      
+
       return data;
     } catch (error: any) {
       console.error('Error updating assistant:', error);

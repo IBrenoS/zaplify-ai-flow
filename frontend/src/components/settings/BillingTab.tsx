@@ -47,8 +47,8 @@ export const BillingTab = () => {
     <div className="space-y-6">
       {/* Current Plan Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-2 border-gradient-to-r from-orange-500/50 to-pink-500/50" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-2 border-gradient-to-r from-orange-500/50 to-pink-500/50"
           : "bg-white shadow-sm border-2 border-primary/20"
       }`}>
         <CardHeader>
@@ -63,7 +63,7 @@ export const BillingTab = () => {
               <h3 className="text-2xl font-bold text-foreground">{currentPlan.name}</h3>
               <p className="text-xl font-semibold text-primary">{currentPlan.price}</p>
             </div>
-            <Button 
+            <Button
               onClick={handleManageSubscription}
               className={`${isDark ? "bg-gradient-zaplify" : ""} gap-2`}
             >
@@ -76,7 +76,7 @@ export const BillingTab = () => {
             {currentPlan.features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className={`p-4 rounded-lg ${
                     isDark ? "bg-muted/30 border border-white/10" : "bg-gray-50 border border-gray-200"
@@ -98,8 +98,8 @@ export const BillingTab = () => {
 
       {/* Payment Method Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader>
@@ -130,8 +130,8 @@ export const BillingTab = () => {
 
       {/* Billing History Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader>
@@ -154,8 +154,8 @@ export const BillingTab = () => {
               </TableHeader>
               <TableBody>
                 {invoices.map((invoice) => (
-                  <TableRow 
-                    key={invoice.id} 
+                  <TableRow
+                    key={invoice.id}
                     className={`${
                       isDark ? "border-white/10 hover:bg-white/5" : "border-gray-100 hover:bg-gray-50"
                     }`}
@@ -163,12 +163,12 @@ export const BillingTab = () => {
                     <TableCell className="text-foreground">{invoice.date}</TableCell>
                     <TableCell className="text-foreground">{invoice.description}</TableCell>
                     <TableCell>
-                      <Badge 
+                      <Badge
                         variant={invoice.status === "paid" ? "default" : "secondary"}
                         className={
-                          invoice.status === "paid" 
-                            ? isDark 
-                              ? "bg-gradient-zaplify text-white" 
+                          invoice.status === "paid"
+                            ? isDark
+                              ? "bg-gradient-zaplify text-white"
                               : "bg-primary text-primary-foreground"
                             : "bg-muted text-muted-foreground"
                         }

@@ -67,7 +67,7 @@ export const AssistantPerformanceChart = () => {
             const value = assistant[selectedMetric];
             const widthPercentage = (value / maxValue) * 100;
             const isHovered = hoveredBar === assistant.assistant;
-            
+
             return (
               <div key={assistant.assistant} className="flex items-center gap-2 sm:gap-4 relative min-w-0">
                 {/* Label do assistente */}
@@ -76,7 +76,7 @@ export const AssistantPerformanceChart = () => {
                     {assistant.assistant}
                   </span>
                 </div>
-                
+
                 {/* Container da barra */}
                 <div className="flex-1 relative min-w-0 overflow-hidden">
                   <div
@@ -105,7 +105,7 @@ export const AssistantPerformanceChart = () => {
 
         {/* Tooltip renderizado em um Portal */}
         {hoveredBar && tooltipPosition && createPortal(
-          <div 
+          <div
             className="fixed z-[9999] pointer-events-none animate-[fadeIn_0.2s_ease-out]"
             style={{
               left: `${tooltipPosition.x}px`,

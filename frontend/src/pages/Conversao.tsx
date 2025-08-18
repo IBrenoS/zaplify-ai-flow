@@ -13,7 +13,7 @@ const Conversao = () => {
         <div className="space-y-6 md:space-y-8 max-w-full">
           <ConversaoHeader />
           <KPICards />
-          
+
           {/* Container com altura fixa para ambos os widgets */}
           <div className="flex flex-wrap items-stretch gap-6 w-full">
             <div className="flex-1 min-w-[300px] md:min-w-[400px] h-[500px]">

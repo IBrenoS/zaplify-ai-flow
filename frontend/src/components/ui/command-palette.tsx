@@ -95,7 +95,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
 
   const searchAssistants = useCallback(async (searchQuery: string) => {
     if (!user || !searchQuery.trim()) return [];
-    
+
     try {
       const { data, error } = await supabase
         .from('assistants')
@@ -122,9 +122,9 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
 
   const filterItems = useCallback(async (searchQuery: string) => {
     setLoading(true);
-    
+
     const lowerQuery = searchQuery.toLowerCase();
-    
+
     // Filtrar itens de navegação
     const filteredNavigation = navigationItems.filter(item =>
       item.title.toLowerCase().includes(lowerQuery) ||

@@ -10,13 +10,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { 
-  Crown, 
-  Upload, 
-  Users, 
-  MessageSquare, 
-  Plus, 
-  Send, 
+import {
+  Crown,
+  Upload,
+  Users,
+  MessageSquare,
+  Plus,
+  Send,
   FileText,
   Sparkles,
   Clock,
@@ -51,7 +51,7 @@ const Prospecting = () => {
 
   const steps = [
     "Configuração",
-    "Contatos", 
+    "Contatos",
     "Mensagens",
     "Agendamento"
   ];
@@ -88,8 +88,8 @@ const Prospecting = () => {
               {steps.map((step, index) => (
                 <div key={step} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
-                    index <= currentStep 
-                      ? "bg-primary text-primary-foreground" 
+                    index <= currentStep
+                      ? "bg-primary text-primary-foreground"
                       : "bg-muted text-muted-foreground"
                   }`}>
                     {index + 1}
@@ -114,7 +114,7 @@ const Prospecting = () => {
                     Funcionalidade Premium
                   </h3>
                   <p className="text-muted-foreground mb-4">
-                    As prospecções automáticas estão disponíveis apenas no plano Pro. 
+                    As prospecções automáticas estão disponíveis apenas no plano Pro.
                     Faça upgrade para desbloquear campanhas ilimitadas.
                   </p>
                   <Button className="bg-gradient-zaplify hover:opacity-90">
@@ -202,17 +202,17 @@ const Prospecting = () => {
                   <TabsTrigger value="csv">Upload CSV</TabsTrigger>
                   <TabsTrigger value="existing">Existentes</TabsTrigger>
                 </TabsList>
-                
+
                 <TabsContent value="manual" className="space-y-4">
                   <div className="space-y-2">
                     <Label>Adicionar contatos manualmente</Label>
-                    <Textarea 
+                    <Textarea
                       placeholder="Digite os números separados por vírgula ou quebra de linha&#10;Exemplo: 11999999999, 11888888888"
                       className="min-h-[120px]"
                     />
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="csv" className="space-y-4">
                   <div className="border-2 border-dashed border-muted rounded-lg p-8 text-center">
                     <Upload className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
@@ -225,7 +225,7 @@ const Prospecting = () => {
                     </Button>
                   </div>
                 </TabsContent>
-                
+
                 <TabsContent value="existing" className="space-y-4">
                   <p className="text-muted-foreground">
                     Selecione contatos já cadastrados no sistema
@@ -265,10 +265,10 @@ const Prospecting = () => {
                   />
                 </div>
               ))}
-              
+
               <div className="flex gap-2">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={addMessage}
                   className="flex-1"
                 >
@@ -319,7 +319,7 @@ const Prospecting = () => {
           {/* Action Button */}
           <Card className="glass-card">
             <CardContent className="p-6">
-              <Button 
+              <Button
                 className="w-full bg-gradient-zaplify hover:opacity-90 h-12 text-lg"
                 disabled={!selectedAssistant || messages.every(m => !m.trim())}
               >
@@ -368,8 +368,8 @@ const Prospecting = () => {
           {isMobile && (
             <div className="fixed bottom-4 left-4 right-4 flex gap-2">
               {currentStep > 0 && (
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={prevStep}
                   className="flex-1"
                 >
@@ -377,7 +377,7 @@ const Prospecting = () => {
                 </Button>
               )}
               {currentStep < steps.length - 1 && (
-                <Button 
+                <Button
                   onClick={nextStep}
                   className="flex-1 bg-gradient-zaplify"
                 >

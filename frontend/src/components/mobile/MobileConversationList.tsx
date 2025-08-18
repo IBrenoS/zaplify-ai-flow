@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
-import { 
-  Bot, 
+import {
+  Bot,
   Search,
   Filter,
 } from "lucide-react";
@@ -42,16 +42,16 @@ export function MobileConversationList({ contacts, onSelectContact }: MobileConv
       {/* Header */}
       <div className="p-4 border-b border-border sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <h1 className="text-xl font-semibold mb-3">Conversas</h1>
-        
+
         {/* Barra de pesquisa */}
         <div className="relative mb-3">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input 
-            placeholder="Buscar conversas..." 
+          <Input
+            placeholder="Buscar conversas..."
             className="pl-10 bg-background/50"
           />
         </div>
-        
+
         {/* Filtros */}
         <div className="flex gap-2 flex-wrap">
           {filters.map((filterItem) => (
@@ -94,7 +94,7 @@ export function MobileConversationList({ contacts, onSelectContact }: MobileConv
                   contact.status === "offline" && "bg-gray-500"
                 )} />
               </div>
-              
+
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
                   <h3 className="font-medium truncate">{contact.name}</h3>
@@ -107,7 +107,7 @@ export function MobileConversationList({ contacts, onSelectContact }: MobileConv
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-muted-foreground truncate">
                     {contact.lastMessage}

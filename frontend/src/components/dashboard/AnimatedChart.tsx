@@ -21,12 +21,12 @@ interface AnimatedBarChartProps {
   children?: React.ReactNode;
 }
 
-export function AnimatedBarChart({ 
-  data, 
-  dataKey, 
-  fill = "hsl(var(--primary))", 
+export function AnimatedBarChart({
+  data,
+  dataKey,
+  fill = "hsl(var(--primary))",
   layout = "vertical",
-  children 
+  children
 }: AnimatedBarChartProps) {
   const [animatedData, setAnimatedData] = useState(
     data.map((item, index) => ({ ...item, [dataKey]: 0, uniqueId: `${dataKey}-${index}` }))
@@ -49,8 +49,8 @@ export function AnimatedBarChart({
           margin={{ top: 20, right: 80, left: 80, bottom: 20 }}
         >
           {children}
-          <Bar 
-            dataKey={dataKey} 
+          <Bar
+            dataKey={dataKey}
             fill={fill}
             radius={[0, 8, 8, 0]}
             animationBegin={200}
@@ -58,8 +58,8 @@ export function AnimatedBarChart({
             animationEasing="ease-out"
           >
             {animatedData.map((entry, index) => (
-              <Cell 
-                key={`cell-${entry.uniqueId || index}`} 
+              <Cell
+                key={`cell-${entry.uniqueId || index}`}
                 fill={fill}
               />
             ))}
@@ -73,8 +73,8 @@ export function AnimatedBarChart({
     <ResponsiveContainer width="100%" height="100%">
       <BarChart data={animatedData}>
         {children}
-        <Bar 
-          dataKey={dataKey} 
+        <Bar
+          dataKey={dataKey}
           fill={fill}
           radius={[4, 4, 0, 0]}
           animationBegin={200}
@@ -82,8 +82,8 @@ export function AnimatedBarChart({
           animationEasing="ease-out"
         >
           {animatedData.map((entry, index) => (
-            <Cell 
-              key={`cell-${entry.uniqueId || index}`} 
+            <Cell
+              key={`cell-${entry.uniqueId || index}`}
               fill={fill}
             />
           ))}
@@ -100,11 +100,11 @@ interface AnimatedLineChartProps {
   children?: React.ReactNode;
 }
 
-export function AnimatedLineChart({ 
-  data, 
-  dataKey, 
-  stroke = "hsl(var(--primary))", 
-  children 
+export function AnimatedLineChart({
+  data,
+  dataKey,
+  stroke = "hsl(var(--primary))",
+  children
 }: AnimatedLineChartProps) {
   const [animatedData, setAnimatedData] = useState([]);
 
@@ -188,23 +188,23 @@ export function FunnelChart({ data, fill = "hsl(var(--primary))" }: FunnelChartP
         layout="horizontal"
         margin={{ top: 20, right: 20, left: 120, bottom: 20 }}
       >
-        <XAxis 
-          type="number" 
-          domain={[0, maxValue]} 
-          hide 
+        <XAxis
+          type="number"
+          domain={[0, maxValue]}
+          hide
         />
-        <YAxis 
-          dataKey="step" 
-          type="category" 
+        <YAxis
+          dataKey="step"
+          type="category"
           width={100}
-          tick={{ 
-            fontSize: 12, 
+          tick={{
+            fontSize: 12,
             fill: 'hsl(var(--foreground))',
             textAnchor: 'end'
           }}
         />
-        <Bar 
-          dataKey="leads" 
+        <Bar
+          dataKey="leads"
           fill={fill}
           radius={[0, 8, 8, 0]}
           animationBegin={200}
@@ -212,8 +212,8 @@ export function FunnelChart({ data, fill = "hsl(var(--primary))" }: FunnelChartP
           animationEasing="ease-out"
         >
           {animatedData.map((entry, index) => (
-            <Cell 
-              key={`funnel-cell-${entry.uniqueId || index}`} 
+            <Cell
+              key={`funnel-cell-${entry.uniqueId || index}`}
               fill={fill}
               className="hover:brightness-110 transition-all duration-200"
             />

@@ -15,28 +15,28 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       toast.error('As senhas não coincidem!');
       return;
     }
-    
+
     if (password.length < 6) {
       toast.error('A senha deve ter pelo menos 6 caracteres');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       const { error } = await signUp(email, password, fullName);
-      
+
       if (error) {
         if (error.message.includes('already registered')) {
           toast.error('Este e-mail já está cadastrado');
@@ -159,8 +159,8 @@ const SignUp = () => {
               </div>
             </div>
 
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={loading}
               className="w-full h-12 bg-gradient-zaplify text-primary-foreground font-poppins font-semibold text-base hover:shadow-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
@@ -187,8 +187,8 @@ const SignUp = () => {
           <div className="text-center">
             <p className="text-muted-foreground">
               Já tem uma conta?{' '}
-              <Link 
-                to="/login" 
+              <Link
+                to="/login"
                 className="text-primary hover:text-primary/80 transition-colors font-medium"
               >
                 Faça Login
@@ -202,9 +202,9 @@ const SignUp = () => {
       <div className="hidden md:flex md:w-3/5 relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20">
         {/* Animated Wave Background */}
         <div className="absolute inset-0">
-          <svg 
-            className="absolute inset-0 w-full h-full" 
-            viewBox="0 0 1200 800" 
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 1200 800"
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
@@ -219,20 +219,20 @@ const SignUp = () => {
                 <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.15" />
               </linearGradient>
             </defs>
-            
+
             {/* Animated Waves */}
-            <path 
-              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z" 
+            <path
+              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave1_20s_ease-in-out_infinite]"
             />
-            <path 
-              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z" 
+            <path
+              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z"
               fill="url(#waveGradient2)"
               className="animate-[wave2_25s_ease-in-out_infinite_reverse]"
             />
-            <path 
-              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z" 
+            <path
+              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave3_30s_ease-in-out_infinite]"
             />

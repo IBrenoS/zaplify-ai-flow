@@ -44,7 +44,7 @@ export const FunnelCanvas = ({
 
   // Determine if we should use dark styling
   const isDarkTheme = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  
+
   // Handler para teclas pressionadas
   const onKeyDown = useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'Delete' || event.key === 'Backspace') {
@@ -107,7 +107,7 @@ export const FunnelCanvas = ({
 
   return (
     <div className="h-full relative">
-      <div 
+      <div
         className={`absolute inset-0 transition-all duration-500 ease-in-out`}
         style={{ backgroundColor }}
       >
@@ -141,20 +141,20 @@ export const FunnelCanvas = ({
             },
           }}
         >
-          <Background 
-            variant={BackgroundVariant.Dots} 
-            gap={25} 
+          <Background
+            variant={BackgroundVariant.Dots}
+            gap={25}
             size={1}
             color={dotColor}
           />
-          <Controls 
+          <Controls
             className={`transition-all duration-500 ${getControlsStyle()}`}
           />
-          <MiniMap 
+          <MiniMap
             className={`transition-all duration-500 ${getMinimapStyle()}`}
             nodeColor={minimapNodeColor}
           />
-          
+
           {/* Gradiente para as conexões */}
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">

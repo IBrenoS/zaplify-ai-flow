@@ -33,7 +33,7 @@ export function MobileTableCard({
   onClick
 }: MobileTableCardProps) {
   return (
-    <Card 
+    <Card
       className={cn(
         "mb-3 transition-all duration-200 active:scale-[0.98] cursor-pointer",
         onClick && "hover:shadow-md",
@@ -51,10 +51,10 @@ export function MobileTableCard({
               </p>
             )}
           </div>
-          
+
           <div className="flex items-center gap-2 ml-2">
             {status && (
-              <Badge 
+              <Badge
                 variant={status.variant}
                 className={cn(
                   "whitespace-nowrap",
@@ -64,7 +64,7 @@ export function MobileTableCard({
                 {status.label}
               </Badge>
             )}
-            
+
             {actions || (
               <Button variant="ghost" size="icon" className="w-8 h-8">
                 <MoreHorizontal className="w-4 h-4" />
@@ -73,7 +73,7 @@ export function MobileTableCard({
           </div>
         </div>
       </CardHeader>
-      
+
       <CardContent className="pt-0">
         <div className="grid grid-cols-2 gap-4">
           {stats.map((stat, index) => (

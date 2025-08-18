@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
+import {
   ArrowLeft,
   Tag,
   Lightbulb,
@@ -67,9 +67,9 @@ export function MobileContactDetails({ contact, onBack }: MobileContactDetailsPr
                 </Badge>
                 <Badge variant="outline">Cliente VIP</Badge>
               </div>
-              
+
               <Separator />
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Última compra:</span>
@@ -98,11 +98,11 @@ export function MobileContactDetails({ contact, onBack }: MobileContactDetailsPr
             <CardContent className="space-y-3">
               <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                 <p className="text-sm">
-                  💡 Este cliente mencionou 'preço' 3 vezes. 
+                  💡 Este cliente mencionou 'preço' 3 vezes.
                   <span className="font-medium"> Sugestão:</span> Ofereça o parcelamento.
                 </p>
               </div>
-              
+
               <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                 <div className="flex items-center gap-2 mb-2">
                   <Flame className="w-4 h-4 text-green-500" />
@@ -112,7 +112,7 @@ export function MobileContactDetails({ contact, onBack }: MobileContactDetailsPr
                   Ótimo momento para um upsell.
                 </p>
               </div>
-              
+
               <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
                 <div className="flex items-center gap-2 mb-2">
                   <Clock className="w-4 h-4 text-blue-500" />

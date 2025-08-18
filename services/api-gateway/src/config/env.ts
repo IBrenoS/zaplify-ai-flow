@@ -6,10 +6,6 @@
  * with secure defaults and comprehensive type safety.
  */
 
-import 'dotenv/config';
-
-import path from 'path';
-
 import { z } from 'zod';
 
 import { logger } from '../utils/logger.js';
@@ -17,21 +13,20 @@ import { logger } from '../utils/logger.js';
 // Load environment-specific .env files
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Try to load environment-specific .env file
+// Force loading only the main .env file
 try {
-  const envPath = path.resolve(process.cwd(), `.env.${NODE_ENV}`);
   const { config } = await import('dotenv');
-  config({ path: envPath, override: false }); // Don't override existing vars
+  config({ path: '.env', override: true }); // Load only .env file with override
 
   logger.info('Environment configuration loaded', 'system', 'env-loader', {
     nodeEnv: NODE_ENV,
-    envFile: `.env.${NODE_ENV}`
+    envFile: '.env'
   });
 } catch {
-  logger.warn('Environment-specific file not found, using defaults', 'system', 'env-loader', {
+  logger.warn('Environment file not found, using defaults', 'system', 'env-loader', {
     nodeEnv: NODE_ENV,
-    envFile: `.env.${NODE_ENV}`,
-    fallback: '.env'
+    envFile: '.env',
+    fallback: 'process.env'
   });
 }/**
  * Schema for server configuration
@@ -164,7 +159,7 @@ const RateLimitConfigSchema = z.object({
     .default(500),
 
   RATE_LIMIT_ENABLED: z.coerce.boolean()
-    .default(true)
+    .default(false)
 });
 
 /**

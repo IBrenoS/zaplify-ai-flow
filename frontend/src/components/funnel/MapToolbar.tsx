@@ -22,14 +22,14 @@ const sourcesData: MapItem[] = [
   { id: "facebook-ads", label: "Facebook Ads", icon: <Facebook className="w-6 h-6 text-blue-600" />, description: "Anúncios do Facebook", category: "Paid" },
   { id: "instagram-ads", label: "Instagram Ads", icon: <Instagram className="w-6 h-6 text-pink-600" />, description: "Anúncios do Instagram", category: "Paid" },
   { id: "google-ads", label: "Google Ads", icon: <Target className="w-6 h-6 text-red-600" />, description: "Anúncios do Google", category: "Paid" },
-  
+
   // Search
   { id: "google-organic", label: "Google Orgânico", icon: <Globe className="w-6 h-6 text-green-600" />, description: "Busca orgânica", category: "Search" },
-  
+
   // Social
   { id: "facebook-organic", label: "Facebook Orgânico", icon: <Facebook className="w-6 h-6 text-blue-500" />, description: "Posts orgânicos", category: "Social" },
   { id: "instagram-organic", label: "Instagram Orgânico", icon: <Instagram className="w-6 h-6 text-pink-500" />, description: "Posts orgânicos", category: "Social" },
-  
+
   // Other
   { id: "direct", label: "Tráfego Direto", icon: <Globe className="w-6 h-6 text-gray-600" />, description: "Acesso direto", category: "Other" },
   { id: "email", label: "E-mail Marketing", icon: <Smartphone className="w-6 h-6 text-purple-600" />, description: "Campanhas de e-mail", category: "Other" }
@@ -47,12 +47,12 @@ const actionsData: MapItem[] = [
   { id: "purchase", label: "Compra", icon: <ShoppingCart className="w-6 h-6 text-green-600" />, description: "Finalizar venda", category: "Conversion" },
   { id: "schedule", label: "Agendamento", icon: <Clock className="w-6 h-6 text-blue-600" />, description: "Agendar reunião", category: "Conversion" },
   { id: "form", label: "Formulário", icon: <FileText className="w-6 h-6 text-purple-600" />, description: "Preenchimento", category: "Conversion" },
-  
+
   // Sales Optimization Actions
   { id: "upsell", label: "Upsell", icon: <TrendingUp className="w-6 h-6 text-green-600" />, description: "Oferecer produto de maior valor", category: "Sales Optimization" },
   { id: "downsell", label: "Downsell", icon: <TrendingDown className="w-6 h-6 text-orange-600" />, description: "Oferecer produto de menor valor", category: "Sales Optimization" },
   { id: "order-bump", label: "Order Bump", icon: <Plus className="w-6 h-6 text-blue-600" />, description: "Adicionar oferta complementar", category: "Sales Optimization" },
-  
+
   // Zaplify Actions
   { id: "whatsapp-message", label: "Enviar Mensagem", icon: <MessageCircle className="w-6 h-6 text-green-600" />, description: "Mensagem WhatsApp", category: "Zaplify" },
   { id: "ai-assistant", label: "Assistente IA", icon: <Bot className="w-6 h-6 text-blue-600" />, description: "Iniciar IA", category: "Zaplify" },
@@ -86,7 +86,7 @@ export function MapToolbar({ onAddNode }: MapToolbarProps) {
   };
 
   const filterItems = (items: MapItem[]) => {
-    return items.filter(item => 
+    return items.filter(item =>
       item.label.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -124,7 +124,7 @@ export function MapToolbar({ onAddNode }: MapToolbarProps) {
   };
 
   const renderCategory = (items: MapItem[], categoryName?: string) => {
-    const categoryItems = categoryName 
+    const categoryItems = categoryName
       ? items.filter(item => item.category === categoryName)
       : items.filter(item => !item.category);
 
@@ -182,7 +182,7 @@ export function MapToolbar({ onAddNode }: MapToolbarProps) {
         )}>
           Map
         </h2>
-        
+
         {/* Campo de Busca */}
         <div className="relative mb-4">
           <Search className={cn(

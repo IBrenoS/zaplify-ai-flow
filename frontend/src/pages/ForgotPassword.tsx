@@ -11,16 +11,16 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const { resetPassword } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       const { error } = await resetPassword(email);
-      
+
       if (error) {
         toast.error('Erro ao enviar e-mail de recuperação: ' + error.message);
       } else {
@@ -75,8 +75,8 @@ const ForgotPassword = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={loading}
                   className="w-full h-12 bg-gradient-zaplify text-primary-foreground font-poppins font-semibold text-base hover:shadow-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -88,8 +88,8 @@ const ForgotPassword = () => {
               <div className="text-center">
                 <p className="text-muted-foreground">
                   Lembrou sua senha?{' '}
-                  <Link 
-                    to="/login" 
+                  <Link
+                    to="/login"
                     className="text-primary hover:text-primary/80 transition-colors font-medium inline-flex items-center gap-1"
                   >
                     <ArrowLeft className="h-4 w-4" />
@@ -105,7 +105,7 @@ const ForgotPassword = () => {
                 <div className="w-20 h-20 bg-gradient-zaplify rounded-full flex items-center justify-center mx-auto mb-6">
                   <Mail className="h-10 w-10 text-primary-foreground" />
                 </div>
-                
+
                 <div className="space-y-2">
                   <h1 className="text-3xl font-poppins font-bold text-foreground">Verifique seu E-mail</h1>
                   <p className="text-muted-foreground">
@@ -115,7 +115,7 @@ const ForgotPassword = () => {
                   </p>
                 </div>
 
-                <Button 
+                <Button
                   asChild
                   className="w-full h-12 bg-gradient-zaplify text-primary-foreground font-poppins font-semibold text-base hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
                 >
@@ -127,7 +127,7 @@ const ForgotPassword = () => {
                 <div className="text-center">
                   <p className="text-muted-foreground text-sm">
                     Não recebeu o e-mail?{' '}
-                    <button 
+                    <button
                       onClick={() => setIsSubmitted(false)}
                       className="text-primary hover:text-primary/80 transition-colors font-medium"
                     >
@@ -145,9 +145,9 @@ const ForgotPassword = () => {
       <div className="hidden md:flex md:w-3/5 relative overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-accent/20">
         {/* Animated Wave Background */}
         <div className="absolute inset-0">
-          <svg 
-            className="absolute inset-0 w-full h-full" 
-            viewBox="0 0 1200 800" 
+          <svg
+            className="absolute inset-0 w-full h-full"
+            viewBox="0 0 1200 800"
             preserveAspectRatio="xMidYMid slice"
           >
             <defs>
@@ -162,20 +162,20 @@ const ForgotPassword = () => {
                 <stop offset="100%" stopColor="hsl(var(--accent))" stopOpacity="0.15" />
               </linearGradient>
             </defs>
-            
+
             {/* Animated Waves */}
-            <path 
-              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z" 
+            <path
+              d="M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave1_20s_ease-in-out_infinite]"
             />
-            <path 
-              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z" 
+            <path
+              d="M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z"
               fill="url(#waveGradient2)"
               className="animate-[wave2_25s_ease-in-out_infinite_reverse]"
             />
-            <path 
-              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z" 
+            <path
+              d="M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z"
               fill="url(#waveGradient1)"
               className="animate-[wave3_30s_ease-in-out_infinite]"
             />

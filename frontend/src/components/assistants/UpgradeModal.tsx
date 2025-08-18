@@ -99,15 +99,15 @@ export const UpgradeModal = ({ isOpen, onClose, currentPlan }: UpgradeModalProps
 
           {/* Botões de ação */}
           <div className="space-y-3">
-            <Button 
+            <Button
               onClick={handleUpgrade}
               disabled={isLoading}
               className="w-full bg-gradient-zaplify hover:shadow-lg text-lg h-12"
             >
               {isLoading ? "Processando..." : "Fazer Upgrade para o Accelerate por R$ 147/mês"}
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               onClick={onClose}
               className="w-full text-muted-foreground hover:text-foreground"
             >

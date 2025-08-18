@@ -7,7 +7,7 @@ interface SalesChartProps {
   data?: Array<{ date: string; value: number }>;
 }
 
-export function SalesChart({ 
+export function SalesChart({
   title = "Vendas dia a dia",
   data = [
     { date: "01/11", value: 2400 },
@@ -36,14 +36,14 @@ export function SalesChart({
   const [pathLength, setPathLength] = useState(0);
   const [tooltipPosition, setTooltipPosition] = useState<{ x: number; y: number } | null>(null);
   const [isTouching, setIsTouching] = useState(false);
-  
+
   // Filter out invalid data points first (before useEffect dependencies)
   const validData = data ? data.filter(point => point && typeof point.value === 'number' && !isNaN(point.value) && point.date) : [];
-  
+
   useEffect(() => {
     // Only run if we have valid data
     if (validData.length === 0) return;
-    
+
     // Calculate path length for smooth animation
     const chartId = `chart-line-${title.replace(/\s+/g, '')}-${Math.random().toString(36).substr(2, 9)}`;
     const pathElement = document.querySelector(`#${chartId}`);
@@ -51,12 +51,12 @@ export function SalesChart({
       const length = (pathElement as SVGPathElement).getTotalLength();
       setPathLength(length);
     }
-    
+
     // Trigger animation on component mount
     const timer = setTimeout(() => setIsAnimated(true), 100);
     return () => clearTimeout(timer);
   }, [validData, title]);
-  
+
   // Early return if data is empty or invalid
   if (!data || data.length === 0) {
     return (
@@ -113,14 +113,14 @@ export function SalesChart({
     const y = padding + (i / 4) * (chartHeight - padding * 2);
     gridLines.push(y);
   }
-  
+
   // Função para encontrar o ponto mais próximo do cursor
   const findClosestPoint = (x: number) => {
     if (!points.length) return null;
-    
+
     let closestIndex = 0;
     let minDistance = Math.abs(points[0].x - x);
-    
+
     for (let i = 1; i < points.length; i++) {
       const distance = Math.abs(points[i].x - x);
       if (distance < minDistance) {
@@ -128,74 +128,74 @@ export function SalesChart({
         closestIndex = i;
       }
     }
-    
+
     return { index: closestIndex, point: points[closestIndex] };
   };
-  
+
   // Manipuladores de eventos para desktop
   const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
     if (!chartRef.current) return;
-    
+
     const rect = e.currentTarget.getBoundingClientRect();
     const chartRect = chartRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * chartWidth;
-    
+
     setTrackingX(x);
-    
+
     const closest = findClosestPoint(x);
     if (closest) {
       // Calcular posição do tooltip relativa ao container do gráfico
       const tooltipX = closest.point.x;
       const tooltipY = closest.point.y - 10; // Posicionar acima do ponto
-      
+
       // Converter para coordenadas da tela
       const screenX = (tooltipX / chartWidth) * rect.width + rect.left;
       const screenY = (tooltipY / chartHeight) * rect.height + rect.top;
-      
+
       setTooltipPosition({ x: screenX, y: screenY });
       setHoveredPoint({ index: closest.index, x: screenX, y: screenY });
     }
   };
-  
+
   const handleMouseLeave = () => {
     setHoveredPoint(null);
     setTrackingX(null);
     setTooltipPosition(null);
   };
-  
+
   // Manipuladores de eventos para mobile
   const handleTouchStart = (e: React.TouchEvent<SVGSVGElement>) => {
     setIsTouching(true);
     handleTouchMove(e);
   };
-  
+
   const handleTouchMove = (e: React.TouchEvent<SVGSVGElement>) => {
     if (!chartRef.current || !isTouching) return;
-    
+
     const touch = e.touches[0];
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((touch.clientX - rect.left) / rect.width) * chartWidth;
-    
+
     setTrackingX(x);
-    
+
     const closest = findClosestPoint(x);
     if (closest) {
       // Calcular posição do tooltip relativa ao container do gráfico
       const tooltipX = closest.point.x;
       const tooltipY = closest.point.y - 10; // Posicionar acima do ponto
-      
+
       // Converter para coordenadas da tela
       const screenX = (tooltipX / chartWidth) * rect.width + rect.left;
       const screenY = (tooltipY / chartHeight) * rect.height + rect.top;
-      
+
       setTooltipPosition({ x: screenX, y: screenY });
       setHoveredPoint({ index: closest.index, x: screenX, y: screenY });
     }
-    
+
     // Prevenir scroll da página durante o toque
     e.preventDefault();
   };
-  
+
   const handleTouchEnd = () => {
     setIsTouching(false);
     setHoveredPoint(null);
@@ -211,19 +211,19 @@ export function SalesChart({
       'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ];
-    
+
     return `${day} de ${months[parseInt(month) - 1]}, 2025`;
   };
-  
+
   // Calcular variação percentual (opcional)
   const calculateVariation = (index: number) => {
     if (index <= 0 || index >= points.length) return null;
-    
+
     const current = validData[index].value;
     const previous = validData[index - 1].value;
-    
+
     if (previous === 0) return null;
-    
+
     const variation = ((current - previous) / previous) * 100;
     return variation.toFixed(1);
   };
@@ -237,9 +237,9 @@ export function SalesChart({
       </div>
 
       <div className="relative" ref={chartRef}>
-        <svg 
-          width={chartWidth} 
-          height={chartHeight} 
+        <svg
+          width={chartWidth}
+          height={chartHeight}
           className="w-full h-auto"
           viewBox={`0 0 ${chartWidth} ${chartHeight}`}
           onMouseMove={handleMouseMove}
@@ -363,7 +363,7 @@ export function SalesChart({
 
         {/* Tooltip renderizado em um Portal */}
         {hoveredPoint && tooltipPosition && createPortal(
-          <div 
+          <div
             className="fixed pointer-events-none z-[9999] animate-[fadeIn_0.2s_ease-out]"
             style={{
               left: `${tooltipPosition.x}px`, // Posição X calculada
@@ -372,9 +372,9 @@ export function SalesChart({
               width: '200px'
             }}
           >
-            <div 
+            <div
               className={`p-3 rounded-lg border shadow-lg transition-all duration-200 ${
-                isDarkTheme 
+                isDarkTheme
                   ? 'bg-[#181818]/90 backdrop-blur-md border-white/10' // Tema escuro
                   : 'bg-white/95 backdrop-blur-sm border-gray-200/50' // Tema claro
               }`}
@@ -383,7 +383,7 @@ export function SalesChart({
               <p className={`text-sm mb-2 font-medium ${isDarkTheme ? 'text-white/90' : 'text-foreground'}`}>
                 {formatFullDate(points[hoveredPoint.index].date)}
               </p>
-              
+
               {/* Valor */}
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-3 h-3 rounded-full bg-primary flex-shrink-0"></div>
@@ -394,15 +394,15 @@ export function SalesChart({
                   </span>
                 </div>
               </div>
-              
+
               {/* Comparativo (opcional) */}
               {hoveredPoint.index > 0 && (
                 <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-200/10">
                   <div className="flex justify-between w-full">
                     <span className={`text-xs ${isDarkTheme ? 'text-white/70' : 'text-muted-foreground'}`}>Comparativo:</span>
                     <span className={`text-xs font-medium ${
-                      calculateVariation(hoveredPoint.index) && parseFloat(calculateVariation(hoveredPoint.index) || '0') >= 0 
-                        ? 'text-green-500' 
+                      calculateVariation(hoveredPoint.index) && parseFloat(calculateVariation(hoveredPoint.index) || '0') >= 0
+                        ? 'text-green-500'
                         : 'text-red-500'
                     }`}>
                       {calculateVariation(hoveredPoint.index) && parseFloat(calculateVariation(hoveredPoint.index) || '0') >= 0 ? '+' : ''}

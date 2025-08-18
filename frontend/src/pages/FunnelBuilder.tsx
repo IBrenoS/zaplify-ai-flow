@@ -70,13 +70,13 @@ export default function FunnelBuilder() {
 
   // Atualizar estilos dos nós existentes quando o modo foco ou tema muda
   const updateNodesForThemeChange = useCallback(() => {
-    setNodes((nds) => 
+    setNodes((nds) =>
       nds.map((node) => ({
         ...node,
         style: getNodeStyle(
-          (node.data && typeof node.data === 'object' && 'type' in node.data) 
-            ? String(node.data.type) 
-            : 'default', 
+          (node.data && typeof node.data === 'object' && 'type' in node.data)
+            ? String(node.data.type)
+            : 'default',
           isFocusMode,
           isDarkTheme
         )
@@ -145,7 +145,7 @@ export default function FunnelBuilder() {
 
         {/* Desktop: Barra lateral permanente */}
         {!isMobile && (
-          <div 
+          <div
             className={`absolute left-0 top-0 z-10 transition-all duration-500 ease-in-out ${
               isFocusMode ? '-translate-x-full opacity-0' : 'translate-x-0 opacity-100'
             }`}
@@ -153,7 +153,7 @@ export default function FunnelBuilder() {
             <MapToolbar onAddNode={addNodeToCanvas} />
           </div>
         )}
-        
+
         {/* Canvas Principal */}
         <FunnelCanvas
           nodes={nodes}
@@ -179,9 +179,9 @@ export default function FunnelBuilder() {
             onAddNode={addNodeToCanvas}
           />
         )}
-        
+
         {/* Painel de Configuração */}
-        <ConfigPanel 
+        <ConfigPanel
           isOpen={isPanelOpen}
           onClose={() => setIsPanelOpen(false)}
           selectedNode={selectedNode}

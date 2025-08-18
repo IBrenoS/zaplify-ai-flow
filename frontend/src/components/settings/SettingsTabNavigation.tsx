@@ -12,7 +12,7 @@ interface SettingsTabNavigationProps {
 export const SettingsTabNavigation = ({ activeTab, onTabChange }: SettingsTabNavigationProps) => {
   const { theme } = useTheme();
   const isDarkTheme = theme === "dark";
-  
+
   const tabs = [
     { id: "profile", label: "Perfil", icon: User },
     { id: "company", label: "Empresa", icon: Building },
@@ -29,7 +29,7 @@ export const SettingsTabNavigation = ({ activeTab, onTabChange }: SettingsTabNav
             {tabs.map((tab) => {
               const IconComponent = tab.icon;
               const isActive = activeTab === tab.id;
-              
+
               return (
                 <TabsTrigger
                   key={tab.id}

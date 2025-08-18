@@ -31,7 +31,7 @@ const presetOptions = [
   },
   {
     label: "Últimos 7 dias",
-    value: "7d", 
+    value: "7d",
     getDateRange: () => ({
       from: startOfDay(subDays(new Date(), 6)),
       to: endOfDay(new Date())
@@ -95,7 +95,7 @@ export function DateRangePicker({
   // Handle custom date selection
   const handleDateSelect = (selectedDate: DateRange | undefined) => {
     setInternalDate(selectedDate)
-    
+
     // If both dates are selected, close the popover and update
     if (selectedDate?.from && selectedDate?.to) {
       onDateChange?.(selectedDate)
@@ -132,8 +132,8 @@ export function DateRangePicker({
             <ChevronDown className="ml-auto h-4 w-4" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent 
-          className="w-auto p-0 bg-background/95 backdrop-blur-xl border border-white/10" 
+        <PopoverContent
+          className="w-auto p-0 bg-background/95 backdrop-blur-xl border border-white/10"
           align="start"
         >
           <div className="flex flex-col lg:flex-row">

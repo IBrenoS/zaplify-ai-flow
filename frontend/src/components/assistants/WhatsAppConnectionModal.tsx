@@ -18,11 +18,11 @@ export const WhatsAppConnectionModal = ({ isOpen, onClose, onSuccess }: WhatsApp
     if (isOpen) {
       // Simular geração do QR Code
       setQrCode("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==");
-      
+
       // Simular processo de conexão
       const timer = setTimeout(() => {
         setConnectionStatus("connecting");
-        
+
         setTimeout(() => {
           setConnectionStatus("success");
           setTimeout(() => {

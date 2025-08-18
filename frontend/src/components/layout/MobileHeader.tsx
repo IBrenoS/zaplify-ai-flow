@@ -23,8 +23,8 @@ export function MobileHeader() {
               <span className="sr-only">Abrir menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent 
-            side="left" 
+          <SheetContent
+            side="left"
             className="p-0 w-80 bg-background border-r border-border/20"
           >
             <div className="h-full">

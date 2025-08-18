@@ -6,7 +6,7 @@ import { SalesChart } from "@/components/dashboard/SalesChart";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { 
+import {
   DollarSign,
   TrendingUp,
   X,
@@ -53,10 +53,10 @@ const Dashboard = () => {
 
   const fetchUserDashboardData = async () => {
     if (!user) return;
-    
+
     try {
       setIsLoading(true);
-      
+
       const today = new Date();
       const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
       const sixtyDaysAgo = new Date(today.getTime() - 60 * 24 * 60 * 60 * 1000);
@@ -100,11 +100,11 @@ const Dashboard = () => {
       const previousNetProfit = previousTotalSales - previousCancelledSales;
 
       // Calcular percentuais de crescimento
-      const totalSalesGrowth = previousTotalSales > 0 ? 
+      const totalSalesGrowth = previousTotalSales > 0 ?
         ((totalSales - previousTotalSales) / previousTotalSales) : 0;
-      const cancelledSalesGrowth = previousCancelledSales > 0 ? 
+      const cancelledSalesGrowth = previousCancelledSales > 0 ?
         ((cancelledSales - previousCancelledSales) / previousCancelledSales) : 0;
-      const netProfitGrowth = previousNetProfit > 0 ? 
+      const netProfitGrowth = previousNetProfit > 0 ?
         ((netProfit - previousNetProfit) / previousNetProfit) : 0;
 
       // Encontrar dia campeão (dia com maior vendas)
@@ -118,7 +118,7 @@ const Dashboard = () => {
 
       const championEntry = Object.entries(dailySales)
         .sort(([,a], [,b]) => b - a)[0];
-      
+
       const championDay = championEntry ? {
         day: new Date(championEntry[0]).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }),
         sales: `R$ ${championEntry[1].toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
@@ -171,9 +171,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-            
-            <div 
-              className="flex items-center justify-center space-x-2 px-4 py-2 rounded-full bg-glass backdrop-blur-xl border border-white/10 cursor-pointer transition-all duration-300 hover:bg-white/5 self-start lg:self-center" 
+
+            <div
+              className="flex items-center justify-center space-x-2 px-4 py-2 rounded-full bg-glass backdrop-blur-xl border border-white/10 cursor-pointer transition-all duration-300 hover:bg-white/5 self-start lg:self-center"
               onClick={() => setShowValues(!showValues)}
             >
               {showValues ? (
@@ -223,7 +223,7 @@ const Dashboard = () => {
                 showValue={showValues}
                 sparklineData={dashboardData.salesChartData.slice(-12).map(d => d.value)}
               />
-              
+
               <GlassKPICard
                 title="Canceladas"
                 value={`R$ ${dashboardData.cancelledSales.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
@@ -233,7 +233,7 @@ const Dashboard = () => {
                 showValue={showValues}
                 sparklineData={[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
               />
-              
+
               <GlassKPICard
                 title="Ganho líquido"
                 value={`R$ ${dashboardData.netProfit.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}
@@ -251,9 +251,9 @@ const Dashboard = () => {
         {/* Gráfico de vendas e Atividade Recente */}
         <div className="flex flex-col space-y-6 lg:grid lg:grid-cols-3 lg:gap-6 lg:space-y-0">
           <div className="lg:col-span-2">
-            <SalesChart 
-              title="Vendas dia a dia" 
-              data={dashboardData.salesChartData} 
+            <SalesChart
+              title="Vendas dia a dia"
+              data={dashboardData.salesChartData}
             />
           </div>
           <div className="lg:col-span-1">

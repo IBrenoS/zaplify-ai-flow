@@ -25,13 +25,13 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
 
   return (
     <div className="h-screen w-full bg-background">
-      <div 
+      <div
         onMouseEnter={() => setIsSidebarHovered(true)}
         onMouseLeave={() => setIsSidebarHovered(false)}
       >
         <AppSidebar />
       </div>
-      <div 
+      <div
         className={`flex flex-col overflow-hidden transition-all duration-300 ease-out ${
           isSidebarHovered ? 'ml-64' : 'ml-16'
         }`}

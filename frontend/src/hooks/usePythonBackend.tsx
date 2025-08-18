@@ -25,12 +25,12 @@ export const usePythonBackend = () => {
     try {
       setLoading(true);
       const assistant = await apiClient.assistants.create(data);
-      
+
       toast({
         title: "Assistente criado!",
         description: "Seu assistente foi criado no backend Python.",
       });
-      
+
       return assistant;
     } catch (error: any) {
       toast({
@@ -64,12 +64,12 @@ export const usePythonBackend = () => {
     try {
       setLoading(true);
       const assistant = await apiClient.assistants.update(id, data);
-      
+
       toast({
         title: "Assistente atualizado!",
         description: "Suas alterações foram salvas.",
       });
-      
+
       return assistant;
     } catch (error: any) {
       toast({
@@ -87,7 +87,7 @@ export const usePythonBackend = () => {
     try {
       setLoading(true);
       await apiClient.assistants.delete(id);
-      
+
       toast({
         title: "Assistente removido",
         description: "O assistente foi removido com sucesso.",

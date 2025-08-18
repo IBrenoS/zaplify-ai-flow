@@ -32,7 +32,7 @@ export const ObjectionsSection = () => {
           <div className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg bg-primary/5 border border-primary/20">
             <p className="text-xs sm:text-sm text-muted-foreground">
               <strong className="text-primary">Insight:</strong> A IA resolveu automaticamente{" "}
-              <span className="font-semibold text-primary">342 objeções</span> este mês, 
+              <span className="font-semibold text-primary">342 objeções</span> este mês,
               salvando vendas que poderiam ser perdidas.
             </p>
           </div>

@@ -21,7 +21,7 @@
     /* Zaplify Colors adapted for light theme */
     --primary: 150 43% 51%; /* #50B887 - Verde suave */
     --primary-foreground: 0 0% 100%;
-    
+
     --secondary: 210 40% 98%;
     --secondary-foreground: 20 14% 37%;
 
@@ -43,16 +43,16 @@
     --glass-border: rgba(0, 0, 0, 0.1);
     --gradient-primary: linear-gradient(135deg, #50B887, #4CAF50);
     --gradient-subtle: linear-gradient(180deg, rgba(80, 184, 135, 0.1), rgba(76, 175, 80, 0.1));
-    
+
     /* Light theme shadows */
     --shadow-elegant: 0px 4px 12px rgba(0, 0, 0, 0.05);
     --shadow-glow: 0 0 20px rgba(80, 184, 135, 0.2);
     --shadow-focus-light: 0 0 0 3px rgba(80, 184, 135, 0.2);
-    
+
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-focus: all 0.2s ease-in-out;
-    
+
     /* Chart animations */
     --chart-animation-duration: 800ms;
     --chart-animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -111,7 +111,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --gradient-primary: linear-gradient(135deg, #39FF14, #2AF598);
     --gradient-subtle: linear-gradient(180deg, rgba(57, 255, 20, 0.1), rgba(42, 245, 152, 0.1));
-    
+
     /* Enhanced shadows for glassmorphism */
     --shadow-elegant: 0 8px 32px rgba(0, 0, 0, 0.12);
     --shadow-glow: 0 0 40px rgba(57, 255, 20, 0.15);
@@ -151,7 +151,7 @@
   .glass-card {
     @apply bg-card/80 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl;
   }
-  
+
   .glass-nav {
     @apply bg-card/60 backdrop-blur-xl border-r border-white/10;
   }
@@ -161,7 +161,7 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
   }
-  
+
   /* Gradient Text & Buttons */
   .gradient-text {
     background: var(--gradient-primary);
@@ -169,31 +169,31 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .gradient-button {
     background: var(--gradient-primary);
     @apply text-primary-foreground font-medium rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105;
   }
-  
+
   /* Hover Effects */
   .hover-lift {
     @apply transition-all duration-300 hover:translate-y-[-2px] hover:shadow-xl;
   }
-  
+
   /* Smooth Animations */
   .smooth-transition {
     transition: var(--transition-smooth);
   }
-  
+
   /* Chart Animations */
   .chart-animate-bars {
     animation: chart-bar-grow var(--chart-animation-duration) var(--chart-animation-easing) forwards;
   }
-  
+
   .chart-animate-line {
     animation: chart-line-draw var(--chart-animation-duration) var(--chart-animation-easing) forwards;
   }
-  
+
   /* Keyframes for chart animations */
   @keyframes chart-bar-grow {
     from {
@@ -205,7 +205,7 @@
       transform-origin: bottom;
     }
   }
-  
+
   @keyframes chart-line-draw {
     from {
       stroke-dashoffset: 1000;
@@ -309,25 +309,25 @@
       transform: scale(1.1);
     }
   }
-  
+
   /* Consistent color fixes */
   .text-semantic-positive {
     color: hsl(var(--primary));
   }
-  
+
   .text-semantic-negative {
     color: hsl(var(--destructive));
   }
-  
+
   .text-semantic-neutral {
     color: hsl(var(--muted-foreground));
   }
-  
+
   .bg-semantic-positive {
     background-color: hsl(var(--primary) / 0.1);
     border-color: hsl(var(--primary) / 0.2);
   }
-  
+
   .bg-semantic-negative {
     background-color: hsl(var(--destructive) / 0.1);
     border-color: hsl(var(--destructive) / 0.2);

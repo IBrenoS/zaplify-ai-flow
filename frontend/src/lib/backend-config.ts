@@ -15,11 +15,11 @@ export const backendConfig = {
 
 export const apiClient = {
   baseURL: 'http://localhost:8000/api/v1',
-  
+
   // Método helper para fazer requisições
   async request(endpoint: string, options: RequestInit = {}) {
     const url = `${this.baseURL}${endpoint}`;
-    
+
     const defaultOptions: RequestInit = {
       headers: {
         'Content-Type': 'application/json',
@@ -27,21 +27,21 @@ export const apiClient = {
       },
       ...options,
     };
-    
+
     try {
       const response = await fetch(url, defaultOptions);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       return await response.json();
     } catch (error) {
       console.error('API request failed:', error);
       throw error;
     }
   },
-  
+
   // Métodos específicos para assistentes
   assistants: {
     async create(data: any) {
@@ -50,29 +50,29 @@ export const apiClient = {
         body: JSON.stringify(data),
       });
     },
-    
+
     async list() {
       return apiClient.request('/assistants');
     },
-    
+
     async get(id: string) {
       return apiClient.request(`/assistants/${id}`);
     },
-    
+
     async update(id: string, data: any) {
       return apiClient.request(`/assistants/${id}`, {
         method: 'PUT',
         body: JSON.stringify(data),
       });
     },
-    
+
     async delete(id: string) {
       return apiClient.request(`/assistants/${id}`, {
         method: 'DELETE',
       });
     },
   },
-  
+
   // Métodos para IA
   ai: {
     async chat(data: any) {
@@ -81,7 +81,7 @@ export const apiClient = {
         body: JSON.stringify(data),
       });
     },
-    
+
     async sentiment(text: string) {
       return apiClient.request('/ai/sentiment', {
         method: 'POST',

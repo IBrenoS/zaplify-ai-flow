@@ -9,27 +9,27 @@ export const validateEmail = (email: string): boolean => {
 
 export const validatePassword = (password: string): { isValid: boolean; errors: string[] } => {
   const errors: string[] = [];
-  
+
   if (password.length < 8) {
     errors.push('Password must be at least 8 characters long');
   }
-  
+
   if (!/[A-Z]/.test(password)) {
     errors.push('Password must contain at least one uppercase letter');
   }
-  
+
   if (!/[a-z]/.test(password)) {
     errors.push('Password must contain at least one lowercase letter');
   }
-  
+
   if (!/\d/.test(password)) {
     errors.push('Password must contain at least one number');
   }
-  
+
   if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
     errors.push('Password must contain at least one special character');
   }
-  
+
   return {
     isValid: errors.length === 0,
     errors
@@ -63,11 +63,11 @@ export const validateFileSize = (file: File, maxSizeInMB: number): boolean => {
 
 export const validateDateRange = (startDate: Date | null, endDate: Date | null): boolean => {
   if (!startDate || !endDate) return false;
-  
+
   const now = new Date();
   const maxPastDate = new Date();
   maxPastDate.setFullYear(now.getFullYear() - 10); // Max 10 years ago
-  
+
   return (
     startDate <= endDate &&
     startDate >= maxPastDate &&
@@ -82,7 +82,7 @@ export const sanitizeAssistantData = (data: any) => {
     description: sanitizeText(data.description || ''),
     personality: sanitizeText(data.personality || ''),
     voice_tone: sanitizeText(data.voice_tone || ''),
-    knowledge_base: Array.isArray(data.knowledge_base) 
+    knowledge_base: Array.isArray(data.knowledge_base)
       ? data.knowledge_base.map((item: string) => sanitizeText(item))
       : [],
     objectives: Array.isArray(data.objectives)

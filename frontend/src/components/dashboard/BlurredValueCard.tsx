@@ -31,7 +31,7 @@ export function BlurredValueCard({
           <p className="text-sm font-inter font-medium text-muted-foreground mb-2">
             {title}
           </p>
-          
+
           <div className="relative">
             <p className={cn(
               "text-3xl font-lexend font-bold text-foreground mb-2 transition-all duration-300",
@@ -39,7 +39,7 @@ export function BlurredValueCard({
             )}>
               {showValue ? value : "R$ ••••••••"}
             </p>
-            
+
             {!showValue && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-16 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
@@ -48,7 +48,7 @@ export function BlurredValueCard({
               </div>
             )}
           </div>
-          
+
           <div className="flex items-center space-x-1">
             <span
               className={cn(
@@ -64,7 +64,7 @@ export function BlurredValueCard({
             <span className="text-xs text-muted-foreground">vs ontem</span>
           </div>
         </div>
-        
+
         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
           <Icon className="w-6 h-6 text-primary" />
         </div>

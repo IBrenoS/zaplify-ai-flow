@@ -11,12 +11,12 @@ import { Input } from "@/components/ui/input";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuSeparator, 
-  DropdownMenuTrigger 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { CommandPalette } from "@/components/ui/command-palette";
 import { useCommandPalette } from "@/hooks/useCommandPalette";
@@ -51,19 +51,19 @@ export function CustomHeader() {
 
   const handleSignOut = async () => {
     if (isLoggingOut) return; // Prevent multiple clicks
-    
+
     setIsLoggingOut(true);
     console.log("🔓 Iniciando logout...");
-    
+
     try {
       const { error } = await signOut();
-      
+
       // Treat "session_not_found" as successful logout
       if (error && !error.message?.includes("session_not_found") && !error.message?.includes("Session not found")) {
         console.error("❌ Erro de logout:", error);
         throw error;
       }
-      
+
       console.log("✅ Logout concluído");
       toast({
         title: "Logout realizado",
@@ -132,7 +132,7 @@ export function CustomHeader() {
           <Button variant="ghost" size="icon" className="h-9 w-9">
             <MessageSquare className="h-5 w-5 text-muted-foreground" />
           </Button>
-          
+
           <Button variant="ghost" size="icon" className="h-9 w-9">
             <HelpCircle className="h-5 w-5 text-muted-foreground" />
           </Button>
@@ -154,8 +154,8 @@ export function CustomHeader() {
             <span className="sr-only">Abrir menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent 
-          side="left" 
+        <SheetContent
+          side="left"
           className="p-0 w-80 bg-background border-r border-border/20"
         >
           <div className="h-full">
@@ -181,17 +181,17 @@ export function CustomHeader() {
       <div className="w-10 flex justify-end">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="h-8 w-8 rounded-full"
             >
               <div className="w-6 h-6 rounded-full bg-gradient-zaplify flex items-center justify-center shadow-sm">
                 {userProfile?.avatar_url ? (
-                  <img 
-                    src={userProfile.avatar_url} 
-                    alt="Avatar" 
-                    className="w-full h-full rounded-full object-cover" 
+                  <img
+                    src={userProfile.avatar_url}
+                    alt="Avatar"
+                    className="w-full h-full rounded-full object-cover"
                   />
                 ) : (
                   <span className="text-xs font-medium text-white">
@@ -207,7 +207,7 @@ export function CustomHeader() {
               <span>Configurações</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem 
+            <DropdownMenuItem
               onClick={handleSignOut}
               disabled={isLoggingOut}
               className="text-destructive focus:text-destructive"

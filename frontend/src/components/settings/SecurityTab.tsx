@@ -13,7 +13,7 @@ import { toast } from "sonner";
 export const SecurityTab = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  
+
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -57,8 +57,8 @@ export const SecurityTab = () => {
     <div className="space-y-6">
       {/* Change Password Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader>
@@ -77,8 +77,8 @@ export const SecurityTab = () => {
                 value={passwordData.currentPassword}
                 onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
                 className={`${
-                  isDark 
-                    ? "bg-muted/50 border-white/10 text-foreground" 
+                  isDark
+                    ? "bg-muted/50 border-white/10 text-foreground"
                     : "bg-white border-gray-200 text-foreground"
                 }`}
               />
@@ -92,8 +92,8 @@ export const SecurityTab = () => {
                 value={passwordData.newPassword}
                 onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
                 className={`${
-                  isDark 
-                    ? "bg-muted/50 border-white/10 text-foreground" 
+                  isDark
+                    ? "bg-muted/50 border-white/10 text-foreground"
                     : "bg-white border-gray-200 text-foreground"
                 }`}
               />
@@ -107,16 +107,16 @@ export const SecurityTab = () => {
                 value={passwordData.confirmPassword}
                 onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
                 className={`${
-                  isDark 
-                    ? "bg-muted/50 border-white/10 text-foreground" 
+                  isDark
+                    ? "bg-muted/50 border-white/10 text-foreground"
                     : "bg-white border-gray-200 text-foreground"
                 }`}
               />
             </div>
           </div>
 
-          <Button 
-            onClick={handlePasswordChange} 
+          <Button
+            onClick={handlePasswordChange}
             className={isDark ? "bg-gradient-zaplify" : ""}
             disabled={!passwordData.currentPassword || !passwordData.newPassword || !passwordData.confirmPassword}
           >
@@ -127,8 +127,8 @@ export const SecurityTab = () => {
 
       {/* Two Factor Authentication Card */}
       <Card className={`${
-        isDark 
-          ? "bg-card/60 backdrop-blur-lg border-white/10" 
+        isDark
+          ? "bg-card/60 backdrop-blur-lg border-white/10"
           : "bg-white shadow-sm border-border"
       }`}>
         <CardHeader>
@@ -149,9 +149,9 @@ export const SecurityTab = () => {
               checked={twoFAEnabled}
               onCheckedChange={handleTwoFAToggle}
               className={`${
-                twoFAEnabled 
-                  ? isDark 
-                    ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500" 
+                twoFAEnabled
+                  ? isDark
+                    ? "data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-orange-500 data-[state=checked]:to-pink-500"
                     : "data-[state=checked]:bg-primary"
                   : ""
               }`}
@@ -174,8 +174,8 @@ export const SecurityTab = () => {
       {/* Two FA Setup Modal */}
       <Dialog open={showTwoFAModal} onOpenChange={setShowTwoFAModal}>
         <DialogContent className={`${
-          isDark 
-            ? "bg-card/95 backdrop-blur-xl border-white/20" 
+          isDark
+            ? "bg-card/95 backdrop-blur-xl border-white/20"
             : "bg-white"
         } max-w-md`}>
           <DialogHeader>
@@ -183,7 +183,7 @@ export const SecurityTab = () => {
               Configurar Autenticação de Dois Fatores
             </DialogTitle>
           </DialogHeader>
-          
+
           <div className="space-y-6 py-4">
             <div className="text-center space-y-4">
               <div className={`mx-auto w-32 h-32 ${
@@ -213,8 +213,8 @@ export const SecurityTab = () => {
                   placeholder="000000"
                   maxLength={6}
                   className={`text-center text-lg tracking-widest ${
-                    isDark 
-                      ? "bg-muted/50 border-white/10 text-foreground" 
+                    isDark
+                      ? "bg-muted/50 border-white/10 text-foreground"
                       : "bg-white border-gray-200 text-foreground"
                   }`}
                 />

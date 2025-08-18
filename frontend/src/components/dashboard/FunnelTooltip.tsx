@@ -21,27 +21,27 @@ export const FunnelTooltip: React.FC<FunnelTooltipProps> = ({ active, payload, l
         <h4 className="font-semibold text-foreground text-base border-b border-border pb-2">
           {label}
         </h4>
-        
+
         <div className="space-y-2">
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">Usuários:</span>
             <span className="font-semibold text-foreground">{data.leads.toLocaleString()}</span>
           </div>
-          
+
           {data.conversionRate > 0 && (
             <div className="flex justify-between items-center">
               <span className="text-sm text-muted-foreground">Taxa de Conversão:</span>
               <span className="font-semibold text-primary">{data.conversionRate}%</span>
             </div>
           )}
-          
+
           <div className="flex justify-between items-center">
             <span className="text-sm text-muted-foreground">% do Total:</span>
             <span className="font-semibold text-foreground">
               {((data.leads / maxValue) * 100).toFixed(1)}%
             </span>
           </div>
-          
+
           {data.conversionRate > 0 && (
             <div className="mt-3 pt-2 border-t border-border">
               <div className="flex justify-between items-center">

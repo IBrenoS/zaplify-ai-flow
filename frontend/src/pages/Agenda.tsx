@@ -129,13 +129,13 @@ const Agenda = () => {
       case "week":
         const weekStart = startOfWeek(currentDate, { locale: ptBR });
         const weekEnd = endOfWeek(currentDate, { locale: ptBR });
-        return events.filter(event => 
+        return events.filter(event =>
           isWithinInterval(event.date, { start: weekStart, end: weekEnd })
         );
       case "month":
         const monthStart = startOfMonth(currentDate);
         const monthEnd = endOfMonth(currentDate);
-        return events.filter(event => 
+        return events.filter(event =>
           isWithinInterval(event.date, { start: monthStart, end: monthEnd })
         );
       case "list":
@@ -156,7 +156,7 @@ const Agenda = () => {
       type: "manual",
       linkedContact: newEvent.linkedContact
     };
-    
+
     setEvents([...events, event]);
     setNewEvent({
       title: "",
@@ -209,14 +209,14 @@ const Agenda = () => {
             />
           </div>
         );
-      
+
       case "week":
         const weekDays = [];
         const weekStart = startOfWeek(currentDate, { locale: ptBR });
         for (let i = 0; i < 7; i++) {
           weekDays.push(addDays(weekStart, i));
         }
-        
+
         return (
           <div className="glass-card p-6">
             <div className="grid grid-cols-7 gap-4">
@@ -241,7 +241,7 @@ const Agenda = () => {
             </div>
           </div>
         );
-      
+
       case "day":
         const hours = Array.from({ length: 12 }, (_, i) => i + 8); // 8h às 19h
         return (
@@ -276,7 +276,7 @@ const Agenda = () => {
             </div>
           </div>
         );
-      
+
       case "list":
         return (
           <div className="glass-card p-6">
@@ -331,7 +331,7 @@ const Agenda = () => {
               Gerencie eventos, reuniões e follow-ups
             </p>
           </div>
-          
+
           <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
             <DialogTrigger asChild>
               <Button className="bg-gradient-zaplify hover:shadow-lg">
@@ -353,7 +353,7 @@ const Agenda = () => {
                     placeholder="Digite o título do evento"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="grid gap-2">
                     <Label htmlFor="startTime">Hora Início</Label>
@@ -374,7 +374,7 @@ const Agenda = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="grid gap-2">
                   <Label htmlFor="linkedContact">Vincular Contato</Label>
                   <Select onValueChange={(value) => setNewEvent({...newEvent, linkedContact: value})}>
@@ -388,7 +388,7 @@ const Agenda = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div className="grid gap-2">
                   <Label htmlFor="description">Descrição</Label>
                   <Textarea
@@ -399,7 +399,7 @@ const Agenda = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="flex justify-end gap-2">
                 <Button variant="outline" onClick={() => setIsModalOpen(false)}>
                   Cancelar
@@ -426,10 +426,10 @@ const Agenda = () => {
                 Hoje
               </Button>
             </div>
-            
+
             <h2 className="text-2xl font-semibold">{getViewTitle()}</h2>
           </div>
-          
+
           <div className="flex items-center gap-2">
             {(["day", "week", "month", "list"] as ViewMode[]).map((mode) => (
               <Button
@@ -438,8 +438,8 @@ const Agenda = () => {
                 onClick={() => setViewMode(mode)}
                 className={viewMode === mode ? "bg-gradient-zaplify" : ""}
               >
-                {mode === "day" ? "Dia" : 
-                 mode === "week" ? "Semana" : 
+                {mode === "day" ? "Dia" :
+                 mode === "week" ? "Semana" :
                  mode === "month" ? "Mês" : "Lista"}
               </Button>
             ))}

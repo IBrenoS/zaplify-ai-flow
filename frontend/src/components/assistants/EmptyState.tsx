@@ -12,12 +12,12 @@ export const EmptyState = ({ onCreateFirst }: EmptyStateProps) => {
       <div className="relative mb-8">
         <div className="relative p-8 rounded-full bg-primary/10 border-2 border-primary/20">
           <Bot className="w-20 h-20 text-primary" />
-          
+
           {/* Ícones de apoio */}
           <div className="absolute -top-2 -right-2 p-2 rounded-full bg-background border border-primary/30">
             <MessageSquare className="w-6 h-6 text-primary" />
           </div>
-          
+
           <div className="absolute -bottom-2 -left-2 p-2 rounded-full bg-background border border-primary/30">
             <TrendingUp className="w-6 h-6 text-primary" />
           </div>
@@ -36,12 +36,12 @@ export const EmptyState = ({ onCreateFirst }: EmptyStateProps) => {
 
       {/* Texto de Apoio */}
       <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl">
-        Dê um nome ao seu assistente, alimente-o com o conhecimento do seu negócio e conecte-o ao seu WhatsApp. 
+        Dê um nome ao seu assistente, alimente-o com o conhecimento do seu negócio e conecte-o ao seu WhatsApp.
         Em poucos minutos, você terá um vendedor digital trabalhando para você 24/7.
       </p>
 
       {/* Call-to-Action */}
-      <Button 
+      <Button
         onClick={onCreateFirst}
         size="lg"
         className="h-14 px-8 text-lg font-semibold bg-gradient-zaplify hover:shadow-xl transition-all duration-300 hover:scale-105"

@@ -12,14 +12,14 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Bot, 
-  User, 
-  Send, 
-  Paperclip, 
-  Smile, 
-  Phone, 
-  Video, 
+import {
+  Bot,
+  User,
+  Send,
+  Paperclip,
+  Smile,
+  Phone,
+  Video,
   MoreVertical,
   Search,
   Filter,
@@ -60,7 +60,7 @@ const contacts: Contact[] = [
     status: "online"
   },
   {
-    id: "2", 
+    id: "2",
     name: "Maria Santos",
     lastMessage: "Tenho interesse no produto...",
     lastMessageTime: "14:15",
@@ -95,7 +95,7 @@ const messages: Message[] = [
     isRead: true
   },
   {
-    id: "3", 
+    id: "3",
     content: "Obrigado pelo atendimento!",
     sender: "client",
     timestamp: "14:32",
@@ -110,13 +110,13 @@ const ZapliWeb = () => {
   const [messageInput, setMessageInput] = useState("");
   const [filter, setFilter] = useState("all");
   const { toast } = useToast();
-  
+
   // Estados para navegação mobile
   const [mobileView, setMobileView] = useState<'list' | 'conversation' | 'details'>('list');
 
   const handleToggleAI = () => {
     setIsAIActive(!isAIActive);
-    
+
     if (!isAIActive) {
       // Ativando IA
       toast({
@@ -159,7 +159,7 @@ const ZapliWeb = () => {
     if (mobileView === 'list') {
       return (
         <ResponsiveLayout>
-          <MobileConversationList 
+          <MobileConversationList
             contacts={contacts}
             onSelectContact={handleSelectContact}
           />
@@ -201,16 +201,16 @@ const ZapliWeb = () => {
           {/* Header da lista */}
           <div className="p-4 border-b border-border">
             <h2 className="text-lg font-semibold mb-3">Conversas</h2>
-            
+
             {/* Barra de pesquisa */}
             <div className="relative mb-3">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <Input 
-                placeholder="Buscar conversas..." 
+              <Input
+                placeholder="Buscar conversas..."
                 className="pl-10 bg-background/50"
               />
             </div>
-            
+
             {/* Filtros */}
             <div className="flex gap-2 flex-wrap">
               {filters.map((filterItem) => (
@@ -256,7 +256,7 @@ const ZapliWeb = () => {
                       contact.status === "offline" && "bg-gray-500"
                     )} />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
                       <h3 className="font-medium truncate">{contact.name}</h3>
@@ -269,7 +269,7 @@ const ZapliWeb = () => {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center justify-between">
                       <p className="text-sm text-muted-foreground truncate">
                         {contact.lastMessage}
@@ -303,7 +303,7 @@ const ZapliWeb = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3">
                 {/* Botão de Toggle IA/Humano */}
                 <Button
@@ -311,8 +311,8 @@ const ZapliWeb = () => {
                   variant={isAIActive ? "default" : "secondary"}
                   className={cn(
                     "rounded-full px-4 py-2 smooth-transition transform hover:scale-105",
-                    isAIActive 
-                      ? "bg-gradient-zaplify hover:shadow-lg" 
+                    isAIActive
+                      ? "bg-gradient-zaplify hover:shadow-lg"
                       : "bg-muted hover:bg-muted/80"
                   )}
                 >
@@ -328,7 +328,7 @@ const ZapliWeb = () => {
                     </>
                   )}
                 </Button>
-                
+
                 <div className="flex items-center gap-1">
                   <Button variant="ghost" size="icon">
                     <Phone className="w-4 h-4" />
@@ -373,7 +373,7 @@ const ZapliWeb = () => {
                   </div>
                 </div>
               ))}
-              
+
               {!isAIActive && (
                 <div className="flex justify-center">
                   <div className="flex items-center gap-2 px-4 py-2 bg-muted/50 rounded-full text-sm text-muted-foreground">
@@ -391,7 +391,7 @@ const ZapliWeb = () => {
               <Button variant="ghost" size="icon">
                 <Paperclip className="w-5 h-5" />
               </Button>
-              
+
               <div className="flex-1 relative">
                 <Input
                   placeholder={isAIActive ? "IA está no controle..." : "Digite uma mensagem..."}
@@ -411,9 +411,9 @@ const ZapliWeb = () => {
                   <Smile className="w-4 h-4" />
                 </Button>
               </div>
-              
-              <Button 
-                size="icon" 
+
+              <Button
+                size="icon"
                 disabled={!messageInput.trim() || isAIActive}
                 className="bg-gradient-zaplify hover:shadow-lg"
               >
@@ -450,9 +450,9 @@ const ZapliWeb = () => {
                     </Badge>
                     <Badge variant="outline">Cliente VIP</Badge>
                   </div>
-                  
+
                   <Separator />
-                  
+
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Última compra:</span>
@@ -481,11 +481,11 @@ const ZapliWeb = () => {
                 <CardContent className="space-y-3">
                   <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                     <p className="text-sm">
-                      💡 Este cliente mencionou 'preço' 3 vezes. 
+                      💡 Este cliente mencionou 'preço' 3 vezes.
                       <span className="font-medium"> Sugestão:</span> Ofereça o parcelamento.
                     </p>
                   </div>
-                  
+
                   <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Flame className="w-4 h-4 text-green-500" />
@@ -495,7 +495,7 @@ const ZapliWeb = () => {
                       Ótimo momento para um upsell.
                     </p>
                   </div>
-                  
+
                   <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="w-4 h-4 text-blue-500" />

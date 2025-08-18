@@ -51,7 +51,7 @@ const ZapliTools = () => {
     {
       id: 3,
       type: "critical",
-      title: " Alerta Crítico", 
+      title: " Alerta Crítico",
       message: "Seu assistente 'Boas-Vindas' não está conseguindo responder perguntas sobre a política de devolução, resultando em 3 transferências para humanos nas últimas 24h.",
       actions: ["Adicionar ao Conhecimento"]
     }
@@ -59,17 +59,17 @@ const ZapliTools = () => {
 
   const sendMessage = () => {
     if (!currentMessage.trim()) return;
-    
+
     const newMessage = {
       id: Date.now(),
       sender: "user" as const,
       message: currentMessage,
       timestamp: new Date().toLocaleTimeString()
     };
-    
+
     setChatMessages(prev => [...prev, newMessage]);
     setCurrentMessage("");
-    
+
     // Simulate assistant response
     setTimeout(() => {
       const assistantResponse = {
@@ -95,7 +95,7 @@ const ZapliTools = () => {
           Teste e otimize seus assistentes antes de colocá-los no ar
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Simulador de Conversa Card */}
         <Card className="glass-card p-8 text-left hover-lift">
@@ -110,7 +110,7 @@ const ZapliTools = () => {
               Teste diferentes cenários de conversação e refine as respostas do seu assistente.
             </p>
           </div>
-          
+
           <div className="bg-white/5 rounded-lg p-4 border border-white/10 mb-6">
             <p className="text-sm text-muted-foreground">
               ✓ Teste conversas em tempo real<br/>
@@ -118,8 +118,8 @@ const ZapliTools = () => {
               ✓ Identifique pontos de melhoria
             </p>
           </div>
-          
-          <Button 
+
+          <Button
             onClick={() => setCurrentView("simulator")}
             variant="secondary"
             className="w-full"
@@ -141,7 +141,7 @@ const ZapliTools = () => {
               Receba insights e sugestões proativas da nossa IA para melhorar a performance dos seus funis.
             </p>
           </div>
-          
+
           <div className="bg-semantic-positive rounded-lg p-4 border border-primary/20 mb-6">
             <div className="flex items-center">
               <Lightbulb className="w-5 h-5 text-primary mr-2" />
@@ -150,8 +150,8 @@ const ZapliTools = () => {
               </p>
             </div>
           </div>
-          
-          <Button 
+
+          <Button
             onClick={() => setCurrentView("analytics")}
             variant="outline"
             className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
@@ -166,8 +166,8 @@ const ZapliTools = () => {
   const renderSimulator = () => (
     <div className="max-w-7xl mx-auto">
       <div className="flex items-center mb-8">
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           onClick={() => setCurrentView("hub")}
           className="mr-4"
         >
@@ -184,7 +184,7 @@ const ZapliTools = () => {
         <div className="lg:col-span-1">
           <Card className="glass-card p-6">
             <h3 className="text-lg font-semibold text-foreground mb-4">Configurações</h3>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-muted-foreground mb-2 block">
@@ -250,7 +250,7 @@ const ZapliTools = () => {
                 <label className="text-sm font-medium text-muted-foreground mb-2 block">
                   Contexto Inicial
                 </label>
-                <Textarea 
+                <Textarea
                   placeholder="Ex: Cliente veio de anúncio do Facebook sobre promoção..."
                   className="min-h-[80px]"
                 />
@@ -265,13 +265,13 @@ const ZapliTools = () => {
             <div className="p-4 border-b border-white/10">
               <h3 className="font-semibold text-foreground">Chat de Teste</h3>
             </div>
-            
+
             <div className="flex-1 p-4 overflow-y-auto space-y-4">
               {chatMessages.map(msg => (
                 <div key={msg.id} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[70%] p-3 rounded-lg ${
-                    msg.sender === "user" 
-                      ? "bg-primary text-primary-foreground" 
+                    msg.sender === "user"
+                      ? "bg-primary text-primary-foreground"
                       : "bg-white/10 text-foreground"
                   }`}>
                     <p className="text-sm">{msg.message}</p>
@@ -280,7 +280,7 @@ const ZapliTools = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="p-4 border-t border-white/10">
               <div className="flex space-x-2">
                 <Input
@@ -303,8 +303,8 @@ const ZapliTools = () => {
   const renderAnalytics = () => (
     <div className="max-w-5xl mx-auto">
       <div className="flex items-center mb-8">
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           onClick={() => setCurrentView("hub")}
           className="mr-4"
         >

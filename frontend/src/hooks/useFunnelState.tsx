@@ -15,7 +15,7 @@ const initialNodes = (() => {
       id: '1',
       type: 'default',
       position: { x: 300, y: 100 },
-      data: { 
+      data: {
         label: 'Início do Funil',
         type: 'start',
         icon: '🎯'
@@ -36,7 +36,7 @@ const initialNodes = (() => {
 
 export const useFunnelState = () => {
   console.log('useFunnelState: Starting hook execution');
-  
+
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
@@ -88,10 +88,10 @@ export const useFunnelState = () => {
     setNodes((nds) =>
       nds.map((node) =>
         node.id === nodeId
-          ? { 
-              ...node, 
+          ? {
+              ...node,
               data: { ...node.data, ...data },
-              style: data.status === 'problem' 
+              style: data.status === 'problem'
                 ? { ...node.style, border: '2px solid #ef4444', backgroundColor: '#fef2f2' }
                 : getNodeStyle((node.data.type as string) || 'default')
             }
@@ -111,7 +111,7 @@ export const useFunnelState = () => {
     isToolbarOpen,
     isEditModalOpen,
     nodeAnnotations,
-    
+
     // Setters
     setNodes,
     setSelectedNode,
@@ -121,7 +121,7 @@ export const useFunnelState = () => {
     setIsToolbarOpen,
     setIsEditModalOpen,
     setNodeAnnotations,
-    
+
     // Handlers
     onNodesChange,
     onEdgesChange,

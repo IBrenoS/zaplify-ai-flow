@@ -112,7 +112,7 @@ export const ProfileTab = () => {
         </div>
 
         <div className="pt-4">
-          <Button 
+          <Button
             onClick={handleSave}
             disabled={!hasChanges}
             className="w-full sm:w-auto"

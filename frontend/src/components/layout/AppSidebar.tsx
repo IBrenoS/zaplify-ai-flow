@@ -44,8 +44,8 @@ export function AppSidebar({ onNavigate }: AppSidebarProps = {}) {
       <div
         className={cn(
           "h-screen flex flex-col transition-all duration-300 ease-out z-50",
-          isMobile 
-            ? "w-full bg-background border-r border-border/20" 
+          isMobile
+            ? "w-full bg-background border-r border-border/20"
             : (isExpanded ? "w-64 glass-nav fixed top-0 left-0" : "w-16 glass-nav fixed top-0 left-0")
         )}
         onMouseEnter={() => !isMobile && setIsHovered(true)}
@@ -76,7 +76,7 @@ export function AppSidebar({ onNavigate }: AppSidebarProps = {}) {
           <ul className={cn("flex flex-col", isMobile ? "space-y-2" : "space-y-1")}>
             {navigation.filter(item => !isMobile || !item.hideOnMobile).map((item) => {
               const isActive = location.pathname === item.href;
-              
+
               if (!isExpanded && !isMobile) {
                 // Modo colapsado - ícones centralizados com tooltips
                 return (
@@ -120,8 +120,8 @@ export function AppSidebar({ onNavigate }: AppSidebarProps = {}) {
                     className={cn(
                       "flex items-center space-x-4 px-4 py-3 rounded-xl smooth-transition group w-full",
                       isActive
-                        ? isMobile 
-                          ? "bg-gradient-zaplify text-white shadow-lg" 
+                        ? isMobile
+                          ? "bg-gradient-zaplify text-white shadow-lg"
                           : "bg-gradient-zaplify text-primary-foreground shadow-lg"
                         : isMobile
                           ? "hover:bg-muted text-muted-foreground hover:text-foreground"

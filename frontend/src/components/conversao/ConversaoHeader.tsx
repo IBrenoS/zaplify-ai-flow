@@ -11,7 +11,7 @@ export const ConversaoHeader = () => {
           Acompanhe o valor gerado pela automação e assistentes de IA da Zaplify
         </p>
       </div>
-      
+
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 w-full lg:w-auto">
         <Button variant="outline" size="sm" className="w-full sm:w-auto whitespace-nowrap">
           Últimos 30 dias

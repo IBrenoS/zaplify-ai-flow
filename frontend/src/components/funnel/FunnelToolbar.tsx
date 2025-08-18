@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  ChevronDown, 
+import {
+  ChevronDown,
   ChevronRight,
   Zap,
   MessageCircle,
@@ -90,7 +90,7 @@ export function FunnelToolbar({ onAddNode }: FunnelToolbarProps) {
   const [expandedCategories, setExpandedCategories] = useState<string[]>(["Gatilhos"]);
 
   const toggleCategory = (categoryTitle: string) => {
-    setExpandedCategories(prev => 
+    setExpandedCategories(prev =>
       prev.includes(categoryTitle)
         ? prev.filter(cat => cat !== categoryTitle)
         : [...prev, categoryTitle]
@@ -128,7 +128,7 @@ export function FunnelToolbar({ onAddNode }: FunnelToolbarProps) {
       <div className="space-y-3">
         {categories.map((category) => {
           const isExpanded = expandedCategories.includes(category.title);
-          
+
           return (
             <Card key={category.title} className="glass-card">
               <Button

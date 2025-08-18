@@ -17,7 +17,7 @@ export const getNodeStyle = (nodeType: string, isFocusMode: boolean = false, isD
       transition: 'all 0.5s ease-in-out'
     };
   }
-  
+
   if (isDarkTheme) {
     return {
       background: '#181818',
@@ -32,7 +32,7 @@ export const getNodeStyle = (nodeType: string, isFocusMode: boolean = false, isD
       transition: 'all 0.5s ease-in-out'
     };
   }
-  
+
   return {
     background: 'white',
     color: '#374151',
@@ -52,7 +52,7 @@ export const createInitialNode = (): Node[] => {
     id: '1',
     type: 'default',
     position: { x: 300, y: 100 },
-    data: { 
+    data: {
       label: 'Início do Funil',
       type: 'start',
       icon: '🎯'
@@ -71,23 +71,23 @@ export const nodeConfig: Record<string, { icon: string; label: string }> = {
   'instagram-organic': { icon: '📸', label: 'Instagram Orgânico' },
   'direct': { icon: '🌐', label: 'Tráfego Direto' },
   'email': { icon: '📧', label: 'E-mail Marketing' },
-  
+
   // Pages
   'opt-in': { icon: '📄', label: 'Página de Captura' },
   'sales-page': { icon: '💰', label: 'Página de Vendas' },
   'thank-you': { icon: '🙏', label: 'Página de Obrigado' },
   'webinar': { icon: '🎥', label: 'Webinar' },
-  
+
   // Actions
   'purchase': { icon: '🛒', label: 'Compra' },
   'schedule': { icon: '📅', label: 'Agendamento' },
   'form': { icon: '📋', label: 'Formulário' },
-  
+
   // Sales Optimization
   'upsell': { icon: '💲↑', label: 'Upsell' },
   'downsell': { icon: '💲↓', label: 'Downsell' },
   'order-bump': { icon: '🛒+', label: 'Order Bump' },
-  
+
   // Zaplify Actions
   'whatsapp-message': { icon: '💬', label: 'Mensagem WhatsApp' },
   'ai-assistant': { icon: '🤖', label: 'Assistente IA' },
@@ -98,12 +98,12 @@ export const nodeConfig: Record<string, { icon: string; label: string }> = {
 
 export const createNode = (nodeType: string, position: { x: number; y: number }, isFocusMode: boolean = false, isDarkTheme: boolean = false): Node => {
   const config = nodeConfig[nodeType] || { icon: '⭐', label: 'Novo Nó' };
-  
+
   return {
     id: `${Date.now()}`,
     type: 'default',
     position,
-    data: { 
+    data: {
       label: config.label,
       type: nodeType,
       icon: config.icon

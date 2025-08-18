@@ -18,7 +18,7 @@ export const FunnelChart = () => {
         <div className="h-80 flex flex-col justify-center space-y-6">
           {conversionFunnelData.map((item, index) => {
             const widthPercentage = (item.leads / maxValue) * 100;
-            
+
             return (
               <div key={item.step} className="flex items-center space-x-4">
                 {/* Label da etapa */}
@@ -27,7 +27,7 @@ export const FunnelChart = () => {
                     {item.step}
                   </span>
                 </div>
-                
+
                 {/* Barra do funil */}
                 <div className="flex-1 relative">
                   <div

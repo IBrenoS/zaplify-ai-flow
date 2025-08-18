@@ -28,31 +28,31 @@ export function ActivityChart() {
           Conversas iniciadas e vendas fechadas
         </p>
       </div>
-      
+
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               axisLine={false}
               tickLine={false}
               tick={{ fill: '#a1a1aa', fontSize: 12 }}
             />
-            <YAxis 
+            <YAxis
               axisLine={false}
               tickLine={false}
               tick={{ fill: '#a1a1aa', fontSize: 12 }}
             />
-            <Bar 
-              dataKey="conversas" 
+            <Bar
+              dataKey="conversas"
               radius={[4, 4, 0, 0]}
               fill="url(#conversasGradient)"
               animationBegin={200}
               animationDuration={1200}
               animationEasing="ease-out"
             />
-            <Bar 
-              dataKey="vendas" 
+            <Bar
+              dataKey="vendas"
               radius={[4, 4, 0, 0]}
               fill="url(#vendasGradient)"
               animationBegin={400}
@@ -72,7 +72,7 @@ export function ActivityChart() {
           </BarChart>
         </ResponsiveContainer>
       </div>
-      
+
       <div className="flex items-center justify-center space-x-8 mt-4">
         <div className="flex items-center space-x-2">
           <div className="w-3 h-3 rounded-full bg-gradient-zaplify"></div>
