@@ -1,10 +1,10 @@
+/* Zaplify Design System - Apple Pro Mode Meets Digital Energy */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Zaplify Design System - Apple Pro Mode Meets Digital Energy */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -41,8 +41,12 @@
     /* Light theme effects */
     --glass-bg: rgba(255, 255, 255, 0.9);
     --glass-border: rgba(0, 0, 0, 0.1);
-    --gradient-primary: linear-gradient(135deg, #50B887, #4CAF50);
-    --gradient-subtle: linear-gradient(180deg, rgba(80, 184, 135, 0.1), rgba(76, 175, 80, 0.1));
+    --gradient-primary: linear-gradient(135deg, #50b887, #4caf50);
+    --gradient-subtle: linear-gradient(
+      180deg,
+      rgba(80, 184, 135, 0.1),
+      rgba(76, 175, 80, 0.1)
+    );
 
     /* Light theme shadows */
     --shadow-elegant: 0px 4px 12px rgba(0, 0, 0, 0.05);
@@ -109,8 +113,12 @@
     /* Glassmorphism effects */
     --glass-bg: rgba(44, 44, 46, 0.6);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --gradient-primary: linear-gradient(135deg, #39FF14, #2AF598);
-    --gradient-subtle: linear-gradient(180deg, rgba(57, 255, 20, 0.1), rgba(42, 245, 152, 0.1));
+    --gradient-primary: linear-gradient(135deg, #39ff14, #2af598);
+    --gradient-subtle: linear-gradient(
+      180deg,
+      rgba(57, 255, 20, 0.1),
+      rgba(42, 245, 152, 0.1)
+    );
 
     /* Enhanced shadows for glassmorphism */
     --shadow-elegant: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -139,7 +147,8 @@
 
   /* Prevent horizontal scrolling on mobile */
   @media (max-width: 768px) {
-    body, #root {
+    body,
+    #root {
       overflow-x: hidden;
       width: 100vw;
     }
@@ -187,11 +196,13 @@
 
   /* Chart Animations */
   .chart-animate-bars {
-    animation: chart-bar-grow var(--chart-animation-duration) var(--chart-animation-easing) forwards;
+    animation: chart-bar-grow var(--chart-animation-duration)
+      var(--chart-animation-easing) forwards;
   }
 
   .chart-animate-line {
-    animation: chart-line-draw var(--chart-animation-duration) var(--chart-animation-easing) forwards;
+    animation: chart-line-draw var(--chart-animation-duration)
+      var(--chart-animation-easing) forwards;
   }
 
   /* Keyframes for chart animations */
@@ -300,7 +311,8 @@
   }
 
   @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.4;
       transform: scale(1);
     }
@@ -335,7 +347,8 @@
 
   /* Wave animations for login page */
   @keyframes wave1 {
-    0%, 100% {
+    0%,
+    100% {
       d: path("M0,300 Q300,200 600,300 T1200,300 L1200,800 L0,800 Z");
     }
     50% {
@@ -344,7 +357,8 @@
   }
 
   @keyframes wave2 {
-    0%, 100% {
+    0%,
+    100% {
       d: path("M0,400 Q400,300 800,400 T1200,400 L1200,800 L0,800 Z");
     }
     50% {
@@ -353,7 +367,8 @@
   }
 
   @keyframes wave3 {
-    0%, 100% {
+    0%,
+    100% {
       d: path("M0,500 Q200,400 400,500 T800,500 T1200,500 L1200,800 L0,800 Z");
     }
     50% {
